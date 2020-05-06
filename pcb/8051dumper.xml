@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/Users/mblair/8051dumper/pcb/8051dumper.sch</source>
+    <date>Sunday, April 19, 2020 at 01:01:32 PM</date>
+    <tool>Eeschema (5.1.4-0-10_14)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>8051dumper</title>
+        <company>Mark J. Blair &lt;nf6x@nf6x.net&gt;</company>
+        <rev>1.0</rev>
+        <date>2020-04-19</date>
+        <source>8051dumper.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U1">
+      <value>8051</value>
+      <footprint>Package_DIP:DIP-40_W15.24mm_ZIF_Socket_Aries_40-6554-10</footprint>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Aries:40-6554-10</field>
+      </fields>
+      <libsource lib="MCU_8051" part="8051" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E81C2BB</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>SN74LS373N</value>
+      <footprint>Package_DIP:DIP-20_W7.62mm</footprint>
+      <datasheet>http://www.ti.com/lit/gpn/sn74LS373</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">TI:SN74LS373N</field>
+      </fields>
+      <libsource lib="Logic" part="SN74LS373N" description="8-bit Latch, 3-state outputs"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E81DCB8</tstamp>
+    </comp>
+    <comp ref="X1">
+      <value>11.0592 MHz</value>
+      <footprint>Oscillator:Oscillator_DIP-8</footprint>
+      <datasheet>http://www.ecsxtal.com/store/pdf/ecs-2200x.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">ECS:ECS-2200BX-110.5</field>
+      </fields>
+      <libsource lib="Oscillator" part="CXO_DIP8" description="Crystal Clock Oscillator, DIP8-style metal package"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8234FD</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>AT28C256-15PU</value>
+      <footprint>Package_DIP:DIP-28_W15.24mm_Socket</footprint>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Microchip:AT28C256-15PU</field>
+      </fields>
+      <libsource lib="Memory_EEPROM" part="AT28C256-15PU" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E824C31</tstamp>
+    </comp>
+    <comp ref="TP1">
+      <value>TestPoint_Mini_Red</value>
+      <footprint>TestPoint:TestPoint_Keystone_5000</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Keystone:5000</field>
+      </fields>
+      <libsource lib="TestPoint" part="TestPoint_Mini_Red" description="Test point, 19x19mm 0.75x0.75in"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8288FD</tstamp>
+    </comp>
+    <comp ref="S3">
+      <value>NKK_UB15SKG035F-FF</value>
+      <footprint>Button_Switch_THT:SW_NKK_UB15SKG035F-FF</footprint>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">NKK:UB15SKG035F-FF</field>
+      </fields>
+      <libsource lib="Switch" part="NKK_UB15SKG035F-FF" description="Momentary button, SPDT, green LED, square green lens"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8298F2</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>TTL-232R-5V</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x6_P2.54mm_Vertical_Unshrouded</footprint>
+      <datasheet>https://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Sullins:PBC06SAAN</field>
+      </fields>
+      <libsource lib="Connector_Module" part="TTL-232R" description="Header for FTDI TTL-232R or equivalent"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E82F3B7</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm</footprint>
+      <datasheet>http://www.vishay.com/docs/45171/kseries.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Vishay:K104K10X7RF5UL2</field>
+      </fields>
+      <libsource lib="Capacitor" part="C_0.1uF_50V_X7R_radial" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8384E1</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E838B64</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>332</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD332R</field>
+      </fields>
+      <libsource lib="Resistor" part="R_332_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E83B63C</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>2N3906</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline_Wide</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">ON Semiconductor:2N3906TF</field>
+      </fields>
+      <libsource lib="Transistor" part="Q_PNP_2N3906" description="PNP transistor, TO-92, 2N3906"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8520A1</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E865007</tstamp>
+    </comp>
+    <comp ref="Q3">
+      <value>2N3906</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline_Wide</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">ON Semiconductor:2N3906TF</field>
+      </fields>
+      <libsource lib="Transistor" part="Q_PNP_2N3906" description="PNP transistor, TO-92, 2N3906"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E85AD78</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E85BF4A</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>332</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD332R</field>
+      </fields>
+      <libsource lib="Resistor" part="R_332_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8827A7</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>2N3906</value>
+      <footprint>Package_TO_SOT_THT:TO-92_Inline_Wide</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">ON Semiconductor:2N3906TF</field>
+      </fields>
+      <libsource lib="Transistor" part="Q_PNP_2N3906" description="PNP transistor, TO-92, 2N3906"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8827B4</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8827C0</tstamp>
+    </comp>
+    <comp ref="S2">
+      <value>NKK_UB15SKG035C-CC</value>
+      <footprint>Button_Switch_THT:SW_NKK_UB15SKG035C-CC</footprint>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">NKK:UB15SKG035C-CC</field>
+      </fields>
+      <libsource lib="Switch" part="NKK_UB15SKG035C-CC" description="Momentary button, SPDT, red LED, square red lens"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E82BE3E</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>10uF</value>
+      <footprint>Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm</footprint>
+      <datasheet>https://product.tdk.com/info/en/catalog/datasheets/leadmlcc_halogenfree_fg_en.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">TDK:FG24X7R1A106KRT06</field>
+      </fields>
+      <libsource lib="Capacitor" part="C_10uF_10V_X7R_radial" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8A610B</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm</footprint>
+      <datasheet>http://www.vishay.com/docs/45171/kseries.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Vishay:K104K10X7RF5UL2</field>
+      </fields>
+      <libsource lib="Capacitor" part="C_0.1uF_50V_X7R_radial" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8A6CF3</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm</footprint>
+      <datasheet>http://www.vishay.com/docs/45171/kseries.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Vishay:K104K10X7RF5UL2</field>
+      </fields>
+      <libsource lib="Capacitor" part="C_0.1uF_50V_X7R_radial" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8A7160</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>0.1uF</value>
+      <footprint>Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm</footprint>
+      <datasheet>http://www.vishay.com/docs/45171/kseries.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Vishay:K104K10X7RF5UL2</field>
+      </fields>
+      <libsource lib="Capacitor" part="C_0.1uF_50V_X7R_radial" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8A746F</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8A7E17</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E8EB7EB</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>10uF</value>
+      <footprint>Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm</footprint>
+      <datasheet>https://product.tdk.com/info/en/catalog/datasheets/leadmlcc_halogenfree_fg_en.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">TDK:FG24X7R1A106KRT06</field>
+      </fields>
+      <libsource lib="Capacitor" part="C_10uF_10V_X7R_radial" description="Unpolarized capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E97A766</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>332</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD332R</field>
+      </fields>
+      <libsource lib="Resistor" part="R_332_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E889540</tstamp>
+    </comp>
+    <comp ref="S1">
+      <value>CK_1101M2S3CQE2</value>
+      <footprint>Button_Switch_THT:SW_CK_1101M2S3CQE2</footprint>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">CK:1101M2S3CQE2</field>
+      </fields>
+      <libsource lib="Switch" part="CK_1101M2S3CQE2" description="SPDT slide switch, ON-ON"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E91843A</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>CUI_PJ-050AH</value>
+      <footprint>Connector_BarrelJack:BarrelJack_Horizontal_CUI_PJ-050AH</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">CUI:PJ-050AH</field>
+      </fields>
+      <libsource lib="Connector_Barrel" part="CUI_PJ-050AH" description="DC Barrel Jack,  5.5mm OD x 2.1mm ID, through hole, w/ switch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E861579</tstamp>
+    </comp>
+    <comp ref="TP2">
+      <value>TestPoint_Mini_Black</value>
+      <footprint>TestPoint:TestPoint_Keystone_5001</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Keystone:5001</field>
+      </fields>
+      <libsource lib="TestPoint" part="TestPoint_Mini_Black" description="Test point, 19x19mm 0.75x0.75in"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E828F58</tstamp>
+    </comp>
+    <comp ref="S4">
+      <value>Copal_S-2150</value>
+      <footprint>Button_Switch_THT:Copal_S-2150</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Copal:S-2150</field>
+      </fields>
+      <libsource lib="Switch" part="Copal_S-2150" description="Rotary switch, 4-position DIP 1P4T"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E927003</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E961A7F</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E962690</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E962C13</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>10k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <libsource lib="Resistor" part="R_10k_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E963026</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>WP7113GD</value>
+      <footprint>LED_THT:LED_D5.0mm_Green_Kingbright_WP7113</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Kingbright:WP7113GD</field>
+      </fields>
+      <libsource lib="LED" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E93C724</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>332</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</datasheet>
+      <fields>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD332R</field>
+      </fields>
+      <libsource lib="Resistor" part="R_332_1%_0p25W_axial" description="Resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E9407F3</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Capacitor" part="C_0.1uF_50V_X7R_radial">
+      <description>Unpolarized capacitor</description>
+      <docs>http://www.vishay.com/docs/45171/kseries.pdf</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_0.1uF_50V_X7R_radial</field>
+        <field name="Footprint">Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Vishay:K104K10X7RF5UL2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Capacitor" part="C_10uF_10V_X7R_radial">
+      <description>Unpolarized capacitor</description>
+      <docs>https://product.tdk.com/info/en/catalog/datasheets/leadmlcc_halogenfree_fg_en.pdf</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_10uF_10V_X7R_radial</field>
+        <field name="Footprint">Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">TDK:FG24X7R1A106KRT06</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Barrel" part="CUI_PJ-050AH">
+      <description>DC Barrel Jack,  5.5mm OD x 2.1mm ID, through hole, w/ switch</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>BarrelJack_Horizontal_CUI_PJ-050AH*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">CUI_PJ-050AH</field>
+        <field name="Footprint">Connector_BarrelJack:BarrelJack_Horizontal_CUI_PJ-050AH</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">CUI:PJ-050AH</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Module" part="TTL-232R">
+      <description>Header for FTDI TTL-232R or equivalent</description>
+      <docs>https://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">TTL-232R</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x6_P2.54mm_Vertical_Unshrouded</field>
+        <field name="MPN">Sullins:PBC06SAAN</field>
+        <field name="IPN">TBD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND(BLK)" type="power_in"/>
+        <pin num="2" name="~CTS~(BRN)" type="input"/>
+        <pin num="3" name="VCC(RED)" type="power_out"/>
+        <pin num="4" name="TXD(ORN)" type="output"/>
+        <pin num="5" name="RXD(YEL)" type="input"/>
+        <pin num="6" name="~RTS~(GRN)" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="LED" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">TBD:TBD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Logic" part="SN74LS373N">
+      <description>8-bit Latch, 3-state outputs</description>
+      <docs>http://www.ti.com/lit/gpn/sn74LS373</docs>
+      <footprints>
+        <fp>DIP-20_W7.62mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN74LS373N</field>
+        <field name="Footprint">Package_DIP:DIP-20_W7.62mm</field>
+        <field name="MPN">TI:SN74LS373N</field>
+        <field name="IPN">TBD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OE" type="input"/>
+        <pin num="2" name="O0" type="3state"/>
+        <pin num="3" name="D0" type="input"/>
+        <pin num="4" name="D1" type="input"/>
+        <pin num="5" name="O1" type="3state"/>
+        <pin num="6" name="O2" type="3state"/>
+        <pin num="7" name="D2" type="input"/>
+        <pin num="8" name="D3" type="input"/>
+        <pin num="9" name="O3" type="3state"/>
+        <pin num="10" name="GND" type="power_in"/>
+        <pin num="11" name="LE" type="input"/>
+        <pin num="12" name="O4" type="3state"/>
+        <pin num="13" name="D4" type="input"/>
+        <pin num="14" name="D5" type="input"/>
+        <pin num="15" name="O5" type="3state"/>
+        <pin num="16" name="O6" type="3state"/>
+        <pin num="17" name="D6" type="input"/>
+        <pin num="18" name="D7" type="input"/>
+        <pin num="19" name="O7" type="3state"/>
+        <pin num="20" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="MCU_8051" part="8051">
+      <footprints>
+        <fp>Package_DIP:DIP-40_W15.24mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">8051</field>
+        <field name="Footprint">Package_DIP:DIP-40_W15.24mm</field>
+        <field name="MPN">8051</field>
+        <field name="IPN">TBD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1.0" type="BiDi"/>
+        <pin num="2" name="P1.1" type="BiDi"/>
+        <pin num="3" name="P1.2" type="BiDi"/>
+        <pin num="4" name="P1.3" type="BiDi"/>
+        <pin num="5" name="P1.4" type="BiDi"/>
+        <pin num="6" name="P1.5" type="BiDi"/>
+        <pin num="7" name="P1.6" type="BiDi"/>
+        <pin num="8" name="P1.7" type="BiDi"/>
+        <pin num="9" name="RST" type="input"/>
+        <pin num="10" name="RxD/P3.0" type="BiDi"/>
+        <pin num="11" name="TxD/P3.1" type="BiDi"/>
+        <pin num="12" name="~INT0~/P3.2" type="BiDi"/>
+        <pin num="13" name="~INT1~/P3.3" type="BiDi"/>
+        <pin num="14" name="T0/P3.4" type="BiDi"/>
+        <pin num="15" name="T1/P3.5" type="BiDi"/>
+        <pin num="16" name="~WR~/P3.6" type="BiDi"/>
+        <pin num="17" name="~RD~/P3.7" type="BiDi"/>
+        <pin num="18" name="XTAL2" type="BiDi"/>
+        <pin num="19" name="XTAL1" type="input"/>
+        <pin num="20" name="VSS" type="power_in"/>
+        <pin num="21" name="P2.0/A8" type="BiDi"/>
+        <pin num="22" name="P2.1/A9" type="BiDi"/>
+        <pin num="23" name="P2.2/A10" type="BiDi"/>
+        <pin num="24" name="P2.3/A11" type="BiDi"/>
+        <pin num="25" name="P2.4/A12" type="BiDi"/>
+        <pin num="26" name="P2.5/A13" type="BiDi"/>
+        <pin num="27" name="P2.6/A14" type="BiDi"/>
+        <pin num="28" name="P2.7/A15" type="BiDi"/>
+        <pin num="29" name="~PSEN" type="output"/>
+        <pin num="30" name="ALE" type="output"/>
+        <pin num="31" name="~EA" type="input"/>
+        <pin num="32" name="P0.7/AD7" type="BiDi"/>
+        <pin num="33" name="P0.6/AD6" type="BiDi"/>
+        <pin num="34" name="P0.5/AD5" type="BiDi"/>
+        <pin num="35" name="P0.4/AD4" type="BiDi"/>
+        <pin num="36" name="P0.3/AD3" type="BiDi"/>
+        <pin num="37" name="P0.2/AD2" type="BiDi"/>
+        <pin num="38" name="P0.1/AD1" type="BiDi"/>
+        <pin num="39" name="P0.0/AD0" type="BiDi"/>
+        <pin num="40" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Memory_EEPROM" part="AT28C256-15PU">
+      <footprints>
+        <fp>DIP-28_W15.24mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AT28C256-15PU</field>
+        <field name="Footprint">Package_DIP:DIP-28_W15.24mm</field>
+        <field name="MPN">Microchip:AT28C256-15PU</field>
+        <field name="IPN">TBD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A14" type="input"/>
+        <pin num="2" name="A12" type="input"/>
+        <pin num="3" name="A7" type="input"/>
+        <pin num="4" name="A6" type="input"/>
+        <pin num="5" name="A5" type="input"/>
+        <pin num="6" name="A4" type="input"/>
+        <pin num="7" name="A3" type="input"/>
+        <pin num="8" name="A2" type="input"/>
+        <pin num="9" name="A1" type="input"/>
+        <pin num="10" name="A0" type="input"/>
+        <pin num="11" name="I/O0" type="BiDi"/>
+        <pin num="12" name="I/O1" type="BiDi"/>
+        <pin num="13" name="I/O2" type="BiDi"/>
+        <pin num="14" name="GND" type="power_in"/>
+        <pin num="15" name="I/O3" type="BiDi"/>
+        <pin num="16" name="I/O4" type="BiDi"/>
+        <pin num="17" name="I/O5" type="BiDi"/>
+        <pin num="18" name="I/O6" type="BiDi"/>
+        <pin num="19" name="I/O7" type="BiDi"/>
+        <pin num="20" name="~CE" type="input"/>
+        <pin num="21" name="A10" type="input"/>
+        <pin num="22" name="~OE" type="input"/>
+        <pin num="23" name="A11" type="input"/>
+        <pin num="24" name="A9" type="input"/>
+        <pin num="25" name="A8" type="input"/>
+        <pin num="26" name="A13" type="input"/>
+        <pin num="27" name="~WE" type="input"/>
+        <pin num="28" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Oscillator" part="CXO_DIP8">
+      <description>Crystal Clock Oscillator, DIP8-style metal package</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Oscillator*DIP*8*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">X</field>
+        <field name="Value">CXO_DIP8</field>
+        <field name="Footprint">Oscillator:Oscillator_DIP-8</field>
+        <field name="MPN">TBD</field>
+        <field name="IPN">TBD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="EN" type="input"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="OUT" type="output"/>
+        <pin num="8" name="Vcc" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Resistor" part="R_10k_1%_0p25W_axial">
+      <description>Resistor</description>
+      <docs>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_10k_1%_0p25W_axial</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD10K0</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Resistor" part="R_332_1%_0p25W_axial">
+      <description>Resistor</description>
+      <docs>https://www.seielect.com/catalog/sei-rnf_rnmf.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_332_1%_0p25W_axial</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Stackpole:RNF14FTD332R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="CK_1101M2S3CQE2">
+      <description>SPDT slide switch, ON-ON</description>
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">CK_1101M2S3CQE2</field>
+        <field name="Footprint">Button_Switch_THT:SW_CK_1101M2S3CQE2</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">CK:1101M2S3CQE2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="Copal_S-2150">
+      <description>Rotary switch, 4-position DIP 1P4T</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">Copal_S-2150</field>
+        <field name="Footprint">Button_Switch_THT:Copal_S-2150</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Copal:S-2150</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="C" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="NKK_UB15SKG035C-CC">
+      <description>Momentary button, SPDT, red LED, square red lens</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">NKK_UB15SKG035C-CC</field>
+        <field name="Footprint">Button_Switch_THT:SW_NKK_UB15SKG035C-CC</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">NKK:UB15SKG035C-CC</field>
+      </fields>
+      <pins>
+        <pin num="1" name="COM" type="passive"/>
+        <pin num="2" name="NO" type="passive"/>
+        <pin num="3" name="NC" type="passive"/>
+        <pin num="L+" name="A" type="passive"/>
+        <pin num="L-" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="NKK_UB15SKG035F-FF">
+      <description>Momentary button, SPDT, green LED, square green lens</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">NKK_UB15SKG035F-FF</field>
+        <field name="Footprint">Button_Switch_THT:SW_NKK_UB15SKG035F-FF</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">NKK:UB15SKG035F-FF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="COM" type="passive"/>
+        <pin num="2" name="NO" type="passive"/>
+        <pin num="3" name="NC" type="passive"/>
+        <pin num="L+" name="A" type="passive"/>
+        <pin num="L-" name="K" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TestPoint" part="TestPoint_Mini_Black">
+      <description>Test point, 19x19mm 0.75x0.75in</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint_Mini_Black</field>
+        <field name="Footprint">TestPoint:TestPoint_Keystone_5001</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Keystone:5001</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TestPoint" part="TestPoint_Mini_Red">
+      <description>Test point, 19x19mm 0.75x0.75in</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint_Mini_Red</field>
+        <field name="Footprint">TestPoint:TestPoint_Keystone_5000</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">Keystone:5000</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor" part="Q_PNP_2N3906">
+      <description>PNP transistor, TO-92, 2N3906</description>
+      <docs>https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF</docs>
+      <footprints>
+        <fp>TO-92*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_PNP_2N3906</field>
+        <field name="Footprint">Package_TO_SOT_THT:TO-92_Inline_Wide</field>
+        <field name="IPN">TBD</field>
+        <field name="MPN">ON Semiconductor:2N3906TF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="E" type="passive"/>
+        <pin num="2" name="B" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Capacitor">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Capacitor.lib</uri>
+    </library>
+    <library logical="Connector_Barrel">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Connector_Barrel.lib</uri>
+    </library>
+    <library logical="Connector_Module">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Connector_Module.lib</uri>
+    </library>
+    <library logical="LED">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/LED.lib</uri>
+    </library>
+    <library logical="Logic">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Logic.lib</uri>
+    </library>
+    <library logical="MCU_8051">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/MCU_8051.lib</uri>
+    </library>
+    <library logical="Memory_EEPROM">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Memory_EEPROM.lib</uri>
+    </library>
+    <library logical="Oscillator">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Oscillator.lib</uri>
+    </library>
+    <library logical="Resistor">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Resistor.lib</uri>
+    </library>
+    <library logical="Switch">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Switch.lib</uri>
+    </library>
+    <library logical="TestPoint">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/TestPoint.lib</uri>
+    </library>
+    <library logical="Transistor">
+      <uri>/Users/mblair/nf6x-kicad5-lib/library/Transistor.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(U1-Pad12)">
+      <node ref="U1" pin="12"/>
+    </net>
+    <net code="2" name="Net-(U1-Pad13)">
+      <node ref="U1" pin="13"/>
+    </net>
+    <net code="3" name="Net-(U1-Pad14)">
+      <node ref="U1" pin="14"/>
+    </net>
+    <net code="4" name="Net-(U1-Pad15)">
+      <node ref="U1" pin="15"/>
+    </net>
+    <net code="5" name="Net-(U1-Pad16)">
+      <node ref="U1" pin="16"/>
+    </net>
+    <net code="6" name="Net-(U1-Pad17)">
+      <node ref="U1" pin="17"/>
+    </net>
+    <net code="7" name="Net-(U1-Pad28)">
+      <node ref="U1" pin="28"/>
+    </net>
+    <net code="8" name="GND">
+      <node ref="S4" pin="C"/>
+      <node ref="TP2" pin="1"/>
+      <node ref="J2" pin="2"/>
+      <node ref="S1" pin="3"/>
+      <node ref="U2" pin="1"/>
+      <node ref="U2" pin="10"/>
+      <node ref="C6" pin="2"/>
+      <node ref="D1" pin="1"/>
+      <node ref="R8" pin="2"/>
+      <node ref="X1" pin="4"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="S2" pin="L-"/>
+      <node ref="U3" pin="14"/>
+      <node ref="U3" pin="20"/>
+      <node ref="S3" pin="L-"/>
+      <node ref="S3" pin="1"/>
+      <node ref="J1" pin="1"/>
+      <node ref="U1" pin="20"/>
+      <node ref="C1" pin="2"/>
+      <node ref="U1" pin="19"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="9" name="+5V">
+      <node ref="R14" pin="1"/>
+      <node ref="R13" pin="1"/>
+      <node ref="R12" pin="1"/>
+      <node ref="R11" pin="1"/>
+      <node ref="R10" pin="1"/>
+      <node ref="U1" pin="40"/>
+      <node ref="S1" pin="2"/>
+      <node ref="U2" pin="20"/>
+      <node ref="C1" pin="1"/>
+      <node ref="R5" pin="1"/>
+      <node ref="X1" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="X1" pin="8"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="C5" pin="1"/>
+      <node ref="S2" pin="1"/>
+      <node ref="Q2" pin="1"/>
+      <node ref="Q3" pin="1"/>
+      <node ref="Q1" pin="1"/>
+      <node ref="U3" pin="27"/>
+      <node ref="U3" pin="28"/>
+    </net>
+    <net code="10" name="Net-(S3-Pad3)">
+      <node ref="S3" pin="3"/>
+    </net>
+    <net code="11" name="Net-(J1-Pad3)">
+      <node ref="J1" pin="3"/>
+    </net>
+    <net code="12" name="Net-(J1-Pad2)">
+      <node ref="J1" pin="2"/>
+      <node ref="J1" pin="6"/>
+    </net>
+    <net code="13" name="Net-(R7-Pad2)">
+      <node ref="S3" pin="L+"/>
+      <node ref="R7" pin="2"/>
+    </net>
+    <net code="14" name="/AD0">
+      <node ref="U3" pin="11"/>
+      <node ref="U2" pin="3"/>
+      <node ref="U1" pin="39"/>
+    </net>
+    <net code="15" name="/AD1">
+      <node ref="U2" pin="4"/>
+      <node ref="U1" pin="38"/>
+      <node ref="U3" pin="12"/>
+    </net>
+    <net code="16" name="/AD2">
+      <node ref="U1" pin="37"/>
+      <node ref="U3" pin="13"/>
+      <node ref="U2" pin="7"/>
+    </net>
+    <net code="17" name="/AD3">
+      <node ref="U1" pin="36"/>
+      <node ref="U2" pin="8"/>
+      <node ref="U3" pin="15"/>
+    </net>
+    <net code="18" name="/AD4">
+      <node ref="U1" pin="35"/>
+      <node ref="U2" pin="18"/>
+      <node ref="U3" pin="16"/>
+    </net>
+    <net code="19" name="/AD5">
+      <node ref="U2" pin="17"/>
+      <node ref="U3" pin="17"/>
+      <node ref="U1" pin="34"/>
+    </net>
+    <net code="20" name="/AD6">
+      <node ref="U2" pin="14"/>
+      <node ref="U3" pin="18"/>
+      <node ref="U1" pin="33"/>
+    </net>
+    <net code="21" name="/AD7">
+      <node ref="U2" pin="13"/>
+      <node ref="U1" pin="32"/>
+      <node ref="U3" pin="19"/>
+    </net>
+    <net code="22" name="/A0">
+      <node ref="U3" pin="10"/>
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="23" name="/A1">
+      <node ref="U3" pin="9"/>
+      <node ref="U2" pin="5"/>
+    </net>
+    <net code="24" name="/A2">
+      <node ref="U3" pin="8"/>
+      <node ref="U2" pin="6"/>
+    </net>
+    <net code="25" name="/A3">
+      <node ref="U2" pin="9"/>
+      <node ref="U3" pin="7"/>
+    </net>
+    <net code="26" name="/A4">
+      <node ref="U3" pin="6"/>
+      <node ref="U2" pin="19"/>
+    </net>
+    <net code="27" name="/A5">
+      <node ref="U3" pin="5"/>
+      <node ref="U2" pin="16"/>
+    </net>
+    <net code="28" name="/A6">
+      <node ref="U2" pin="15"/>
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="29" name="/A7">
+      <node ref="U2" pin="12"/>
+      <node ref="U3" pin="3"/>
+    </net>
+    <net code="30" name="/A8">
+      <node ref="U3" pin="25"/>
+      <node ref="U1" pin="21"/>
+    </net>
+    <net code="31" name="/A9">
+      <node ref="U1" pin="22"/>
+      <node ref="U3" pin="24"/>
+    </net>
+    <net code="32" name="/A10">
+      <node ref="U1" pin="23"/>
+      <node ref="U3" pin="21"/>
+    </net>
+    <net code="33" name="/A11">
+      <node ref="U1" pin="24"/>
+      <node ref="U3" pin="23"/>
+    </net>
+    <net code="34" name="/A12">
+      <node ref="U1" pin="25"/>
+      <node ref="U3" pin="2"/>
+    </net>
+    <net code="35" name="/A13">
+      <node ref="U3" pin="26"/>
+      <node ref="U1" pin="26"/>
+    </net>
+    <net code="36" name="/A14">
+      <node ref="U3" pin="1"/>
+      <node ref="U1" pin="27"/>
+    </net>
+    <net code="37" name="~PSEN">
+      <node ref="U1" pin="29"/>
+      <node ref="U3" pin="22"/>
+    </net>
+    <net code="38" name="ALE">
+      <node ref="U2" pin="11"/>
+      <node ref="U1" pin="30"/>
+    </net>
+    <net code="40" name="/CLK">
+      <node ref="U1" pin="18"/>
+      <node ref="X1" pin="5"/>
+    </net>
+    <net code="41" name="~REDLED">
+      <node ref="U1" pin="2"/>
+      <node ref="R3" pin="2"/>
+    </net>
+    <net code="42" name="~GRNLED">
+      <node ref="U1" pin="3"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="43" name="/~EA">
+      <node ref="U1" pin="31"/>
+      <node ref="R2" pin="1"/>
+      <node ref="Q1" pin="3"/>
+    </net>
+    <net code="44" name="Net-(Q1-Pad2)">
+      <node ref="Q1" pin="2"/>
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="45" name="EA">
+      <node ref="R1" pin="2"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="46" name="Net-(Q3-Pad3)">
+      <node ref="R7" pin="1"/>
+      <node ref="Q3" pin="3"/>
+    </net>
+    <net code="47" name="Net-(Q3-Pad2)">
+      <node ref="Q3" pin="2"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="48" name="Net-(R6-Pad2)">
+      <node ref="R6" pin="2"/>
+      <node ref="S2" pin="L+"/>
+    </net>
+    <net code="49" name="Net-(Q2-Pad3)">
+      <node ref="R6" pin="1"/>
+      <node ref="Q2" pin="3"/>
+    </net>
+    <net code="50" name="Net-(Q2-Pad2)">
+      <node ref="Q2" pin="2"/>
+      <node ref="R3" pin="1"/>
+    </net>
+    <net code="51" name="Net-(S2-Pad3)">
+      <node ref="S2" pin="3"/>
+    </net>
+    <net code="52" name="~GRNBTN">
+      <node ref="S3" pin="2"/>
+      <node ref="U1" pin="4"/>
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="53" name="/RXD">
+      <node ref="J1" pin="4"/>
+      <node ref="U1" pin="10"/>
+    </net>
+    <net code="54" name="/TXD">
+      <node ref="U1" pin="11"/>
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="55" name="Net-(J2-Pad3)">
+      <node ref="J2" pin="3"/>
+    </net>
+    <net code="56" name="RST">
+      <node ref="R8" pin="1"/>
+      <node ref="U1" pin="9"/>
+      <node ref="C5" pin="2"/>
+      <node ref="R9" pin="1"/>
+    </net>
+    <net code="57" name="Net-(R9-Pad2)">
+      <node ref="R9" pin="2"/>
+      <node ref="S2" pin="2"/>
+    </net>
+    <net code="58" name="Net-(C6-Pad1)">
+      <node ref="TP1" pin="1"/>
+      <node ref="J2" pin="1"/>
+      <node ref="S1" pin="1"/>
+      <node ref="C6" pin="1"/>
+    </net>
+    <net code="59" name="~R4k">
+      <node ref="S4" pin="1"/>
+      <node ref="R10" pin="2"/>
+      <node ref="U1" pin="8"/>
+    </net>
+    <net code="60" name="~R8k">
+      <node ref="R11" pin="2"/>
+      <node ref="S4" pin="2"/>
+      <node ref="U1" pin="7"/>
+    </net>
+    <net code="61" name="~R16k">
+      <node ref="U1" pin="6"/>
+      <node ref="R12" pin="2"/>
+      <node ref="S4" pin="3"/>
+    </net>
+    <net code="62" name="~R32k">
+      <node ref="R13" pin="2"/>
+      <node ref="U1" pin="5"/>
+      <node ref="S4" pin="4"/>
+    </net>
+    <net code="63" name="Net-(D1-Pad2)">
+      <node ref="R14" pin="2"/>
+      <node ref="D1" pin="2"/>
+    </net>
+  </nets>
+</export>

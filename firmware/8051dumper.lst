@@ -1,0 +1,267 @@
+tpasm 1.5		Assembling on Tue May  5 19:38:08 2020
+
+Source File: 8051dumper.asm
+
+Line  Loc      Object/(Value) T	Source
+----- -------- -------------- -	------
+1     00000000                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+2     00000000                 	;; 8051dumper.asm: Dump internal ROM contents of 8051 to serial port.
+3     00000000                 	;;
+4     00000000                 	;;
+5     00000000                 	
+6     00000000                 	                PROCESSOR 8051
+7     00000000                 	                INCLUDE "SFR.asm"
+1     00000000                 	;; 8051/8052 Special-Function Registers...
+72    00000000                 	;; ...8051/8052 Special-Function Registers
+73    00000000                 	
+8     00000000                 	
+9     00000000                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+10    00000000                 	;; GPIOs
+11    00000000                 	OUT_EA          ALIAS   "P1.0"      ; Inverted and connected to EAn pin
+12    00000000                 	OUT_REDLEDn     ALIAS   "P1.1"      ; Red LED in RESET button
+13    00000000                 	OUT_GRNLEDn     ALIAS   "P1.2"      ; Green LED in START button
+14    00000000                 	IN_GRNBTNn      ALIAS   "P1.3"      ; Green START button
+15    00000000                 	IN_R32Kn        ALIAS   "P1.4"      ; Dump size knob: 8058 (32k)
+16    00000000                 	IN_R16Kn        ALIAS   "P1.5"      ; Dump size knob: 8054 (16k)
+17    00000000                 	IN_R8Kn         ALIAS   "P1.6"      ; Dump size knob: 8052 (8k)
+18    00000000                 	IN_R4Kn         ALIAS   "P1.7"      ; Dump size knob: 8051 (4k)
+19    00000000                 	
+20    00000000                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+21    00000000                 	;; Internal RAM (uninitialized data segment)
+22    00000000                 	                SEGU    "IRAM"
+23    00000000                 	
+24    00000000                 	                ORG     0x0000
+25    00000000                 	FOO:            DS      1
+26    00000001                 	BAR:            DS      7
+27    00000008                 	
+28    00000008                 	; Rest of RAM is stack. Initial stack pointer should be 1 byte before
+29    00000008                 	; beginning of stack because PUSH operations pre-increment the stack pointer.
+30    00000008                 	STACK:          DS      0x80-$
+31    00000080                 	
+32    00000080                 	
+33    00000080                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+34    00000080                 	;; Code segment starting at base of external program memory EEPROM
+35    00000080                 	                SEG     "code"
+36    00000000                 	
+37    00000000                 	                ; Reset vector (3 bytes)
+38    00000000                 	                ORG     0x0000
+39    00000000 02 80 4C        	RESET:          LJMP    INIT
+40    00000003                 	
+41    00000003                 	                ; External Request 0 Interrupt Service Routine (8 bytes)
+42    00000003                 	                ORG     0x0003
+43    00000003 80 FB           	ER0_ISR:        SJMP    RESET
+44    00000005                 	
+45    00000005                 	                ; Internal Timer/Counter 0 Interrupt Service Routine (8 bytes)
+46    00000005                 	                ORG     0x000B
+47    0000000B 80 F3           	ITC0_ISR:       SJMP    RESET
+48    0000000D                 	
+49    0000000D                 	                ; External Request 1 Interrupt Service Routine (8 bytes)
+50    0000000D                 	                ORG     0x0013
+51    00000013 80 EB           	ER1_ISR:        SJMP    RESET
+52    00000015                 	
+53    00000015                 	                ; Internal Timer/Counter 1 Interrupt Service Routine (8 bytes)
+54    00000015                 	                ORG     0x001B
+55    0000001B 80 E3           	ITC1_ISR:       SJMP    RESET
+56    0000001D                 	
+57    0000001D                 	                ; Internal Serial Port Interrupt Service Routine (8 bytes)
+58    0000001D                 	                ORG     0x0023
+59    00000023 80 DB           	ISP_ISR:        SJMP    RESET
+60    00000025                 	
+61    00000025                 	                ; Some other damn interrupt
+62    00000025                 	                ORG     0x002B
+63    0000002B 80 D3           	FOO_ISR:        SJMP    RESET
+64    0000002D                 	
+65    0000002D                 	
+66    0000002D                 	
+67    0000002D                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+68    0000002D                 	;; Following code/data will be accessed in a mirror image of the 32k EEPROM
+69    0000002D                 	;; at 0x8000. We will raise the EAn pin with a GPIO in order to overlay
+70    0000002D                 	;; internal ROM at address 0x0000. We will not use any interrupts because
+71    0000002D                 	;; interrupt vectors will contain unpredictable code from internal ROM.
+72    0000002D                 	
+73    0000002D                 	                ORG     0x0032
+74    00000032                 	                RORG    0x8032
+75    00000032                 	
+76    00000032 38 30 35 31 64  	IDSTR:          DB      "8051dumper v1.0 by NF6X", 0x0D, 0x0A, 0x00
+               75 6D 70 65 72  
+               20 76 31 2E 30  
+               20 62 79 20 4E  
+               46 36 58 0D 0A  
+               00              
+77    0000004C                 	
+78    0000004C                 	;; 
+79    0000004C                 	INIT:
+80    0000004C 75 A8 00        	                MOV     IE, #0x00               ; Disable all interrupts
+81    0000004F 75 90 FF        	                MOV     P1, #0xFF               ; GPIOs all input/high
+82    00000052 75 81 07        	                MOV     SP, #STACK-1            ; Initialize stack pointer
+83    00000055                 	
+84    00000055                 	
+85    00000055                 	; Configure serial port for Mode 1, 9600 8n1
+86    00000055                 	;   SMOD = 0 ==> K = 1
+87    00000055                 	;   Oscillator frequency = 11.0592 MHz
+88    00000055                 	;   TH1 = 256 - (K * Fosc)/(32 * 12 * Baud)
+89    00000055                 	;   TH1 = 256 - (1 * 11059200)/(32 * 12 * 9600) = 253 = 0xFD
+90    00000055 75 87 00        	                MOV     PCON, #0x00             ; SMOD = 0
+91    00000058 75 98 50        	                MOV     SCON, #0x50             ; Mode 1
+92    0000005B 75 89 21        	                MOV     TMOD, #0x21             ; T1: Mode 2, T0: Mode 1
+93    0000005E 75 8D FD        	                MOV     TH1,  #0xFD             ; 9600 baud
+94    00000061 75 8B FD        	                MOV     TL1,  #0xFD             ; 9600 baud
+95    00000064                a	                SETB    TCON_TR1                ; Enable timer
+95    00000064 D2 8E          A	                SETB    TCON.6                
+96    00000066                 	
+97    00000066                 	
+98    00000066                 	; Send ID string 
+99    00000066 90 80 32        	                MOV     DPTR, #IDSTR
+100   00000069 11 B3           	                ACALL   SENDSTR
+101   0000006B                 	
+102   0000006B                 	
+103   0000006B                 	; Blink green LED until green START button pressed.
+104   0000006B                 	; Flash LED 2x per second at 20% duty cycle, checking
+105   0000006B                 	; button every 100ms.
+106   0000006B                a	WAITSTART:      CLR     OUT_GRNLEDn             ; On for 100ms
+106   0000006B C2 92          A	WAITSTART:      CLR     P1.2             
+107   0000006D 11 92           	                ACALL   DELAY100ms
+108   0000006F                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
+108   0000006F 30 93 18       A	                JNB     P1.3, DUMP        
+109   00000072                a	                SETB    OUT_GRNLEDn             ; Off for 400ms
+109   00000072 D2 92          A	                SETB    P1.2             
+110   00000074 11 92           	                ACALL   DELAY100ms
+111   00000076                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
+111   00000076 30 93 11       A	                JNB     P1.3, DUMP        
+112   00000079 11 92           	                ACALL   DELAY100ms
+113   0000007B                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
+113   0000007B 30 93 0C       A	                JNB     P1.3, DUMP        
+114   0000007E 11 92           	                ACALL   DELAY100ms
+115   00000080                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
+115   00000080 30 93 07       A	                JNB     P1.3, DUMP        
+116   00000083 11 92           	                ACALL   DELAY100ms
+117   00000085                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
+117   00000085 30 93 02       A	                JNB     P1.3, DUMP        
+118   00000088 80 E1           	                SJMP    WAITSTART
+119   0000008A                 	
+120   0000008A                 	; Read dump size knob and begin dumping code.
+121   0000008A                a	DUMP:           SETB    OUT_GRNLEDn             ; Green LED off
+121   0000008A D2 92          A	DUMP:           SETB    P1.2             
+122   0000008C                a	                CLR     OUT_REDLEDn             ; Red LED on
+122   0000008C C2 91          A	                CLR     P1.1             
+123   0000008E                a	                CLR     OUT_EA                  ; Select INTERNAL ROM at 0x0000
+123   0000008E C2 90          A	                CLR     P1.0                  
+124   00000090                 	
+125   00000090                 	                
+126   00000090                 	
+127   00000090 80 FE           	                SJMP    $
+128   00000092                 	
+129   00000092                 	
+130   00000092                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131   00000092                 	;; Delay 100ms
+132   00000092                 	;; Uses Timer 0, delaying 50ms twice
+133   00000092                 	;; Oscillator frequency = 11.0592 MHz
+134   00000092                 	;;   ==> 50ms = 11059200 / (12 * 20) = 46080 = 0xB400 counts
+135   00000092                 	;;   ==> (TH0,TL0) = 0x10000 - 0xB400 = 0x4C00
+136   00000092                 	;; This all ignores subroutine call overhead and so forth.
+137   00000092                 	
+138   00000092                a	DELAY100ms:     CLR     TCON_TR0                ; Timer off
+138   00000092 C2 8C          A	DELAY100ms:     CLR     TCON.4                
+139   00000094 75 8C 4C        	                MOV     TH0, #0x4C              ; 50ms delay
+140   00000097 75 8A 00        	                MOV     TL0, #0x00
+141   0000009A                a	                CLR     TCON_TF0                ; Clear overflow
+141   0000009A C2 8D          A	                CLR     TCON.5                
+142   0000009C                a	                SETB    TCON_TR0                ; Timer on
+142   0000009C D2 8C          A	                SETB    TCON.4                
+143   0000009E                a	                JNB     TCON_TF0, $             ; Wait for overflow
+143   0000009E 30 8D FD       A	                JNB     TCON.5, $             
+144   000000A1                a	                CLR     TCON_TR0                ; Timer off
+144   000000A1 C2 8C          A	                CLR     TCON.4                
+145   000000A3 75 8C 4C        	                MOV     TH0, #0x4C              ; 50ms delay
+146   000000A6 75 8A 00        	                MOV     TL0, #0x00
+147   000000A9                a	                CLR     TCON_TF0                ; Clear overflow
+147   000000A9 C2 8D          A	                CLR     TCON.5                
+148   000000AB                a	                SETB    TCON_TR0                ; Timer on
+148   000000AB D2 8C          A	                SETB    TCON.4                
+149   000000AD                a	                JNB     TCON_TF0, $             ; Wait for overflow
+149   000000AD 30 8D FD       A	                JNB     TCON.5, $             
+150   000000B0                a	                CLR     TCON_TR0                ; Timer off
+150   000000B0 C2 8C          A	                CLR     TCON.4                
+151   000000B2 22              	                RET
+152   000000B3                 	
+153   000000B3                 	
+154   000000B3                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155   000000B3                 	;; Send NUL-terminated string in ROM pointed to by DPTR.
+156   000000B3                 	;; Trashes A, DPTR
+157   000000B3                 	
+158   000000B3 E4              	SENDSTR:        CLR     A                       ; Get byte from ROM
+159   000000B4 93              	                MOVC    A, @A+DPTR
+160   000000B5 60 0A           	                JZ      .DONE                   ; Done if it is NUL
+161   000000B7                a	                CLR     SCON_TI                 ; Send byte
+161   000000B7 C2 99          A	                CLR     SCON.1                 
+162   000000B9 F5 99           	                MOV     SBUF, A
+163   000000BB                a	                JNB     SCON_TI, $              ; Loop until character sent
+163   000000BB 30 99 FD       A	                JNB     SCON.1, $              
+164   000000BE A3              	                INC     DPTR                    ; Send next byte
+165   000000BF 80 F2           	                SJMP    SENDSTR
+166   000000C1 22              	.DONE:          RET
+167   000000C2                 	
+168   000000C2                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+169   000000C2                 	;;
+170   000000C2                 	
+171   000000C2                 	                END
+
+Segment Listing
+MinAddr   MaxAddr   Segment
+--------  --------  -------
+00000000  000000C1  code
+00000000  0000007F  IRAM
+
+Symbol Table Listing
+Value    U Name
+-------- - ----
+000000E0 * ACC
+000000F0 * B
+00000001 * BAR
+00008092   DELAY100ms
+00000083 * DPH
+00000082 * DPL
+0000808A   DUMP
+00000003 * ER0_ISR
+00000013 * ER1_ISR
+00000000 * FOO
+0000002B * FOO_ISR
+00008032   IDSTR
+000000A8   IE
+0000804C   INIT
+000000B8 * IP
+00000023 * ISP_ISR
+0000000B * ITC0_ISR
+0000001B * ITC1_ISR
+00000080 * P0
+00000090   P1
+000000A0 * P2
+000000B0 * P3
+00000087   PCON
+000000D0 * PSW
+000000CB * RCAP2H
+000000CA * RCAP2L
+00000000   RESET
+00000099   SBUF
+00000098   SCON
+000080B3   SENDSTR
+000080C1   SENDSTR@DONE
+00000081   SP
+00000008   STACK
+000000C8 * T2CON
+00000088   TCON
+0000008C   TH0
+0000008D   TH1
+000000CD * TH2
+0000008A   TL0
+0000008B   TL1
+000000CC * TL2
+00000089   TMOD
+0000806B   WAITSTART
+00000001 * __8051
+
+Assembled in 3 passes
+
+Total assembly time 00:00:00
+Total Errors:   0
+Total Warnings: 0

@@ -1,0 +1,1619 @@
+EESchema Schematic File Version 4
+LIBS:8051dumper-cache
+EELAYER 30 0
+EELAYER END
+$Descr B 17000 11000
+encoding utf-8
+Sheet 1 1
+Title "8051dumper"
+Date "2020-04-19"
+Rev "1.0"
+Comp "Mark J. Blair <nf6x@nf6x.net>"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_8051:8051 U1
+U 1 1 5E81C2BB
+P 9150 5650
+F 0 "U1" H 9350 7200 50  0000 L CNN
+F 1 "8051" H 9350 7100 50  0000 L CNN
+F 2 "Package_DIP:DIP-40_W15.24mm_ZIF_Socket_Aries_40-6554-10" H 9200 4250 50  0001 L CNN
+F 3 "" H 9750 6000 50  0001 C CNN
+F 4 "Aries:40-6554-10" H 9200 4150 50  0001 L CNN "MPN"
+F 5 "TBD" H 9200 4050 50  0001 L CNN "IPN"
+	1    9150 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Logic:SN74LS373N U2
+U 1 1 5E81DCB8
+P 11900 4900
+F 0 "U2" H 11950 5700 50  0000 L CNN
+F 1 "SN74LS373N" H 11950 5600 50  0000 L CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 11950 4250 50  0001 L CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS373" H 11900 4900 50  0001 C CNN
+F 4 "TI:SN74LS373N" H 11950 4150 50  0001 L CNN "MPN"
+F 5 "TBD" H 11950 4050 50  0001 L CNN "IPN"
+	1    11900 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Oscillator:CXO_DIP8 X1
+U 1 1 5E8234FD
+P 7800 4450
+F 0 "X1" H 7850 4800 50  0000 L CNN
+F 1 "11.0592 MHz" H 7850 4700 50  0000 L CNN
+F 2 "Oscillator:Oscillator_DIP-8" H 8250 4100 50  0001 C CNN
+F 3 "http://www.ecsxtal.com/store/pdf/ecs-2200x.pdf" H 7700 4450 50  0001 C CNN
+F 4 "ECS:ECS-2200BX-110.5" H 8100 4300 50  0001 C CNN "MPN"
+F 5 "TBD" H 8250 4300 50  0001 C CNN "IPN"
+	1    7800 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Memory_EEPROM:AT28C256-15PU U3
+U 1 1 5E824C31
+P 13300 4400
+F 0 "U3" H 13950 4700 60  0000 L CNN
+F 1 "AT28C256-15PU" H 13950 4600 60  0000 L CNN
+F 2 "Package_DIP:DIP-28_W15.24mm_Socket" H 14000 1850 60  0001 L CNN
+F 3 "" H 13300 4400 60  0000 C CNN
+F 4 "Microchip:AT28C256-15PU" H 14000 2050 60  0001 L CNN "MPN"
+F 5 "TBD" H 14000 1950 60  0001 L CNN "IPN"
+	1    13300 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L TestPoint:TestPoint_Mini_Red TP1
+U 1 1 5E8288FD
+P 2600 1350
+F 0 "TP1" H 2600 1550 50  0000 C CNN
+F 1 "TestPoint_Mini_Red" H 2600 1650 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5000" H 2650 1700 50  0001 C CNN
+F 3 "~" H 2800 1350 50  0001 C CNN
+F 4 "TBD" H 2600 1900 50  0001 C CNN "IPN"
+F 5 "Keystone:5000" H 2600 1800 50  0001 C CNN "MPN"
+	1    2600 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:NKK_UB15SKG035F-FF S3
+U 1 1 5E8298F2
+P 4650 5100
+F 0 "S3" H 4650 5385 50  0000 C CNN
+F 1 "NKK_UB15SKG035F-FF" H 4650 5294 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_NKK_UB15SKG035F-FF" H 4650 4500 50  0001 C CNN
+F 3 "" H 4700 4900 50  0001 C CNN
+F 4 "TBD" H 4650 4400 50  0001 C CNN "IPN"
+F 5 "NKK:UB15SKG035F-FF" H 4650 4300 50  0001 C CNN "MPN"
+	1    4650 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Module:TTL-232R J1
+U 1 1 5E82F3B7
+P 7300 6400
+F 0 "J1" H 7300 6650 50  0000 C CNN
+F 1 "TTL-232R-5V" H 7300 6550 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x6_P2.54mm_Vertical_Unshrouded" H 7300 5750 50  0001 C CNN
+F 3 "https://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf" H 7450 6400 50  0001 C CNN
+F 4 "Sullins:PBC06SAAN" H 7300 5650 50  0001 C CNN "MPN"
+F 5 "TBD" H 7300 5550 50  0001 C CNN "IPN"
+	1    7300 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Capacitor:C_0.1uF_50V_X7R_radial C1
+U 1 1 5E8384E1
+P 4700 1800
+F 0 "C1" H 4815 1846 50  0000 L CNN
+F 1 "0.1uF" H 4815 1755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm" H 4725 1625 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/45171/kseries.pdf" H 4700 1800 50  0001 C CNN
+F 4 "TBD" H 4725 1550 50  0001 L CNN "IPN"
+F 5 "Vishay:K104K10X7RF5UL2" H 4725 1475 50  0001 L CNN "MPN"
+	1    4700 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R2
+U 1 1 5E838B64
+P 8050 5500
+F 0 "R2" V 7950 5500 50  0000 C CNN
+F 1 "10k" V 8050 5500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8300 5500 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 8130 5500 50  0001 C CNN
+F 4 "TBD" V 8350 5500 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 8400 5500 50  0001 C CNN "MPN"
+	1    8050 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resistor:R_332_1%_0p25W_axial R7
+U 1 1 5E83B63C
+P 5100 5400
+F 0 "R7" V 5000 5400 50  0000 C CNN
+F 1 "332" V 5100 5400 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5350 5400 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 5180 5400 50  0001 C CNN
+F 4 "TBD" V 5400 5400 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD332R" V 5450 5400 50  0001 C CNN "MPN"
+	1    5100 5400
+	0    1    1    0   
+$EndComp
+Text Label 9900 4400 0    50   ~ 0
+AD0
+Text Label 9900 4500 0    50   ~ 0
+AD1
+Text Label 9900 4600 0    50   ~ 0
+AD2
+Text Label 9900 4700 0    50   ~ 0
+AD3
+Text Label 9900 4800 0    50   ~ 0
+AD4
+Text Label 9900 4900 0    50   ~ 0
+AD5
+Text Label 9900 5000 0    50   ~ 0
+AD6
+Text Label 9900 5100 0    50   ~ 0
+AD7
+Text Label 11150 4400 0    50   ~ 0
+AD0
+Text Label 11150 4500 0    50   ~ 0
+AD1
+Text Label 11150 4600 0    50   ~ 0
+AD2
+Text Label 11150 4700 0    50   ~ 0
+AD3
+Text Label 11150 5100 0    50   ~ 0
+AD4
+Text Label 11150 5000 0    50   ~ 0
+AD5
+Text Label 11150 4900 0    50   ~ 0
+AD6
+Text Label 11150 4800 0    50   ~ 0
+AD7
+Text Label 14700 4400 0    50   ~ 0
+AD0
+Text Label 14700 4500 0    50   ~ 0
+AD1
+Text Label 14700 4600 0    50   ~ 0
+AD2
+Text Label 14700 4700 0    50   ~ 0
+AD3
+Text Label 14700 5100 0    50   ~ 0
+AD7
+Entry Wire Line
+	10100 4400 10200 4300
+Wire Wire Line
+	9750 5100 10100 5100
+Wire Wire Line
+	9750 5000 10100 5000
+Wire Wire Line
+	9750 4900 10100 4900
+Wire Wire Line
+	9750 4800 10100 4800
+Wire Wire Line
+	9750 4700 10100 4700
+Wire Wire Line
+	9750 4600 10100 4600
+Wire Wire Line
+	9750 4500 10100 4500
+Wire Wire Line
+	9750 4400 10100 4400
+Entry Wire Line
+	14900 4400 15000 4300
+Wire Wire Line
+	14500 4400 14900 4400
+Wire Wire Line
+	14500 4500 14900 4500
+Wire Wire Line
+	14500 4600 14900 4600
+Wire Wire Line
+	14500 4700 14900 4700
+Wire Wire Line
+	14500 4800 14900 4800
+Wire Wire Line
+	14500 4900 14900 4900
+Wire Wire Line
+	14500 5000 14900 5000
+Wire Wire Line
+	14500 5100 14900 5100
+Entry Wire Line
+	10950 4300 11050 4400
+Entry Wire Line
+	10950 4400 11050 4500
+Entry Wire Line
+	10950 4500 11050 4600
+Entry Wire Line
+	10950 4600 11050 4700
+Entry Wire Line
+	10950 4700 11050 4800
+Entry Wire Line
+	10950 4800 11050 4900
+Entry Wire Line
+	10950 4900 11050 5000
+Entry Wire Line
+	10950 5000 11050 5100
+Wire Wire Line
+	11400 4400 11050 4400
+Wire Wire Line
+	11400 4500 11050 4500
+Wire Wire Line
+	11400 4600 11050 4600
+Wire Wire Line
+	11400 4700 11050 4700
+Wire Wire Line
+	11400 4800 11050 4800
+Wire Wire Line
+	11400 4900 11050 4900
+Wire Wire Line
+	11400 5000 11050 5000
+Wire Wire Line
+	11400 5100 11050 5100
+Text Label 12450 4400 0    50   ~ 0
+A0
+Text Label 12450 4500 0    50   ~ 0
+A1
+Text Label 12450 4600 0    50   ~ 0
+A2
+Text Label 12450 4700 0    50   ~ 0
+A3
+Text Label 12450 5100 0    50   ~ 0
+A4
+Text Label 12450 5000 0    50   ~ 0
+A5
+Text Label 12450 4900 0    50   ~ 0
+A6
+Text Label 12450 4800 0    50   ~ 0
+A7
+Text Label 13000 5200 0    50   ~ 0
+A8
+Text Label 13000 5300 0    50   ~ 0
+A9
+Text Label 13000 5400 0    50   ~ 0
+A10
+Text Label 13000 5500 0    50   ~ 0
+A11
+Text Label 13000 5600 0    50   ~ 0
+A12
+Text Label 13000 5700 0    50   ~ 0
+A13
+Text Label 13000 5800 0    50   ~ 0
+A14
+Text Label 9900 6200 0    50   ~ 0
+A8
+Text Label 9900 6300 0    50   ~ 0
+A9
+Text Label 9900 6400 0    50   ~ 0
+A10
+Text Label 9900 6500 0    50   ~ 0
+A11
+Text Label 9900 6600 0    50   ~ 0
+A12
+Text Label 9900 6700 0    50   ~ 0
+A13
+Text Label 9900 6800 0    50   ~ 0
+A14
+Entry Wire Line
+	10100 6200 10200 6100
+Entry Wire Line
+	12900 5200 12800 5300
+Entry Wire Line
+	12800 5400 12900 5300
+Entry Wire Line
+	12900 5400 12800 5500
+Entry Wire Line
+	12800 5600 12900 5500
+Entry Wire Line
+	12900 5600 12800 5700
+Entry Wire Line
+	12800 5800 12900 5700
+Entry Wire Line
+	12900 5800 12800 5900
+Entry Wire Line
+	10100 4500 10200 4400
+Entry Wire Line
+	10100 4600 10200 4500
+Entry Wire Line
+	10100 4700 10200 4600
+Entry Wire Line
+	10100 4800 10200 4700
+Entry Wire Line
+	10100 4900 10200 4800
+Entry Wire Line
+	10100 5000 10200 4900
+Entry Wire Line
+	10100 5100 10200 5000
+Entry Wire Line
+	14900 4500 15000 4400
+Entry Wire Line
+	14900 4600 15000 4500
+Entry Wire Line
+	14900 4700 15000 4600
+Entry Wire Line
+	14900 4800 15000 4700
+Entry Wire Line
+	14900 4900 15000 4800
+Entry Wire Line
+	14900 5000 15000 4900
+Entry Wire Line
+	14900 5100 15000 5000
+Wire Wire Line
+	13300 5200 12900 5200
+Wire Wire Line
+	13300 5300 12900 5300
+Wire Wire Line
+	13300 5400 12900 5400
+Wire Wire Line
+	13300 5500 12900 5500
+Wire Wire Line
+	13300 5600 12900 5600
+Wire Wire Line
+	13300 5700 12900 5700
+Wire Wire Line
+	13300 5800 12900 5800
+Wire Wire Line
+	9750 6200 10100 6200
+Wire Wire Line
+	9750 6300 10100 6300
+Wire Wire Line
+	9750 6400 10100 6400
+Wire Wire Line
+	9750 6500 10100 6500
+Wire Wire Line
+	9750 6600 10100 6600
+Wire Wire Line
+	9750 6700 10100 6700
+Wire Wire Line
+	9750 6800 10100 6800
+Entry Wire Line
+	10100 6300 10200 6200
+Entry Wire Line
+	10100 6400 10200 6300
+Entry Wire Line
+	10100 6500 10200 6400
+Entry Wire Line
+	10100 6600 10200 6500
+Entry Wire Line
+	10100 6700 10200 6600
+Entry Wire Line
+	10100 6800 10200 6700
+$Comp
+L power:GND #PWR010
+U 1 1 5E87AE28
+P 11900 5800
+F 0 "#PWR010" H 11900 5550 50  0001 C CNN
+F 1 "GND" H 11905 5627 50  0000 C CNN
+F 2 "" H 11900 5800 50  0001 C CNN
+F 3 "" H 11900 5800 50  0001 C CNN
+	1    11900 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR014
+U 1 1 5E87D0F6
+P 9150 7150
+F 0 "#PWR014" H 9150 6900 50  0001 C CNN
+F 1 "GND" H 9155 6977 50  0000 C CNN
+F 2 "" H 9150 7150 50  0001 C CNN
+F 3 "" H 9150 7150 50  0001 C CNN
+	1    9150 7150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 7150 9150 7100
+$Comp
+L power:GND #PWR013
+U 1 1 5E88074A
+P 13900 6750
+F 0 "#PWR013" H 13900 6500 50  0001 C CNN
+F 1 "GND" H 13905 6577 50  0000 C CNN
+F 2 "" H 13900 6750 50  0001 C CNN
+F 3 "" H 13900 6750 50  0001 C CNN
+	1    13900 6750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13900 6750 13900 6700
+Wire Wire Line
+	7750 6700 8050 6700
+Wire Wire Line
+	8050 6700 8050 6200
+Wire Wire Line
+	8050 6200 8550 6200
+Wire Wire Line
+	7750 6800 8150 6800
+Wire Wire Line
+	8150 6800 8150 6300
+Wire Wire Line
+	8150 6300 8550 6300
+$Comp
+L power:GND #PWR011
+U 1 1 5E88A5B4
+P 7900 6150
+F 0 "#PWR011" H 7900 5900 50  0001 C CNN
+F 1 "GND" H 7905 5977 50  0000 C CNN
+F 2 "" H 7900 6150 50  0001 C CNN
+F 3 "" H 7900 6150 50  0001 C CNN
+	1    7900 6150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 6400 7750 6050
+Wire Wire Line
+	7750 6050 7900 6050
+Wire Wire Line
+	7900 6050 7900 6150
+Wire Wire Line
+	7750 6900 7900 6900
+Wire Wire Line
+	7900 6900 7900 6500
+Wire Wire Line
+	7900 6500 7750 6500
+NoConn ~ 7750 6600
+Wire Wire Line
+	11900 5700 11900 5750
+Wire Wire Line
+	11900 5750 11400 5750
+Wire Wire Line
+	11400 5750 11400 5400
+Connection ~ 11900 5750
+Wire Wire Line
+	11900 5750 11900 5800
+Wire Bus Line
+	10200 6050 12800 6050
+Text GLabel 8450 5500 0    50   Output ~ 0
+~PSEN
+Text GLabel 8450 5700 0    50   Output ~ 0
+ALE
+Wire Wire Line
+	8450 5700 8550 5700
+Wire Wire Line
+	8550 5500 8450 5500
+Text GLabel 13100 6300 0    50   Input ~ 0
+~PSEN
+Text GLabel 11300 5300 0    50   Input ~ 0
+ALE
+Wire Wire Line
+	11300 5300 11400 5300
+Wire Wire Line
+	11900 4000 11900 4100
+$Comp
+L power:+5V #PWR03
+U 1 1 5E8A2C81
+P 11900 4000
+F 0 "#PWR03" H 11900 3850 50  0001 C CNN
+F 1 "+5V" H 11915 4173 50  0000 C CNN
+F 2 "" H 11900 4000 50  0001 C CNN
+F 3 "" H 11900 4000 50  0001 C CNN
+	1    11900 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13900 4000 13900 4100
+$Comp
+L power:+5V #PWR04
+U 1 1 5E8A33F4
+P 13900 4000
+F 0 "#PWR04" H 13900 3850 50  0001 C CNN
+F 1 "+5V" H 13915 4173 50  0000 C CNN
+F 2 "" H 13900 4000 50  0001 C CNN
+F 3 "" H 13900 4000 50  0001 C CNN
+	1    13900 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 4100 9150 4200
+$Comp
+L power:+5V #PWR06
+U 1 1 5E8A61A4
+P 9150 4100
+F 0 "#PWR06" H 9150 3950 50  0001 C CNN
+F 1 "+5V" H 9165 4273 50  0000 C CNN
+F 2 "" H 9150 4100 50  0001 C CNN
+F 3 "" H 9150 4100 50  0001 C CNN
+	1    9150 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR01
+U 1 1 5E8A9340
+P 3000 1900
+F 0 "#PWR01" H 3000 1750 50  0001 C CNN
+F 1 "+5V" H 3015 2073 50  0000 C CNN
+F 2 "" H 3000 1900 50  0001 C CNN
+F 3 "" H 3000 1900 50  0001 C CNN
+	1    3000 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 5E8A95BC
+P 2600 2100
+F 0 "#PWR02" H 2600 1850 50  0001 C CNN
+F 1 "GND" H 2605 1927 50  0000 C CNN
+F 2 "" H 2600 2100 50  0001 C CNN
+F 3 "" H 2600 2100 50  0001 C CNN
+	1    2600 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR012
+U 1 1 5E8B7DCB
+P 13050 6600
+F 0 "#PWR012" H 13050 6450 50  0001 C CNN
+F 1 "+5V" H 13065 6773 50  0000 C CNN
+F 2 "" H 13050 6600 50  0001 C CNN
+F 3 "" H 13050 6600 50  0001 C CNN
+	1    13050 6600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13050 6600 13050 6650
+Wire Wire Line
+	13050 6650 13300 6650
+Wire Wire Line
+	13300 6650 13300 6400
+Wire Bus Line
+	15000 3650 10950 3650
+Connection ~ 10950 3650
+Wire Bus Line
+	10950 3650 10200 3650
+Wire Wire Line
+	8050 5350 8050 5300
+Wire Wire Line
+	8050 5300 8550 5300
+$Comp
+L power:GND #PWR09
+U 1 1 5E8C5663
+P 8050 5700
+F 0 "#PWR09" H 8050 5450 50  0001 C CNN
+F 1 "GND" H 8055 5527 50  0000 C CNN
+F 2 "" H 8050 5700 50  0001 C CNN
+F 3 "" H 8050 5700 50  0001 C CNN
+	1    8050 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 5700 8050 5650
+Connection ~ 8050 5300
+Text Label 8300 5300 0    50   ~ 0
+~EA
+$Comp
+L power:+5V #PWR017
+U 1 1 5E8CC15E
+P 4700 1550
+F 0 "#PWR017" H 4700 1400 50  0001 C CNN
+F 1 "+5V" H 4715 1723 50  0000 C CNN
+F 2 "" H 4700 1550 50  0001 C CNN
+F 3 "" H 4700 1550 50  0001 C CNN
+	1    4700 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR023
+U 1 1 5E8CC7A0
+P 4700 2050
+F 0 "#PWR023" H 4700 1800 50  0001 C CNN
+F 1 "GND" H 4705 1877 50  0000 C CNN
+F 2 "" H 4700 2050 50  0001 C CNN
+F 3 "" H 4700 2050 50  0001 C CNN
+	1    4700 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 2050 4700 1950
+Wire Wire Line
+	4700 1650 4700 1550
+$Comp
+L power:+5V #PWR018
+U 1 1 5E8D2BB3
+P 5150 1550
+F 0 "#PWR018" H 5150 1400 50  0001 C CNN
+F 1 "+5V" H 5165 1723 50  0000 C CNN
+F 2 "" H 5150 1550 50  0001 C CNN
+F 3 "" H 5150 1550 50  0001 C CNN
+	1    5150 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR024
+U 1 1 5E8D2BBD
+P 5150 2050
+F 0 "#PWR024" H 5150 1800 50  0001 C CNN
+F 1 "GND" H 5155 1877 50  0000 C CNN
+F 2 "" H 5150 2050 50  0001 C CNN
+F 3 "" H 5150 2050 50  0001 C CNN
+	1    5150 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 2050 5150 1950
+Wire Wire Line
+	5150 1650 5150 1550
+$Comp
+L power:+5V #PWR019
+U 1 1 5E8D7023
+P 5600 1550
+F 0 "#PWR019" H 5600 1400 50  0001 C CNN
+F 1 "+5V" H 5615 1723 50  0000 C CNN
+F 2 "" H 5600 1550 50  0001 C CNN
+F 3 "" H 5600 1550 50  0001 C CNN
+	1    5600 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR025
+U 1 1 5E8D702D
+P 5600 2050
+F 0 "#PWR025" H 5600 1800 50  0001 C CNN
+F 1 "GND" H 5605 1877 50  0000 C CNN
+F 2 "" H 5600 2050 50  0001 C CNN
+F 3 "" H 5600 2050 50  0001 C CNN
+	1    5600 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 2050 5600 1950
+Wire Wire Line
+	5600 1650 5600 1550
+$Comp
+L power:+5V #PWR020
+U 1 1 5E8D7045
+P 6050 1550
+F 0 "#PWR020" H 6050 1400 50  0001 C CNN
+F 1 "+5V" H 6065 1723 50  0000 C CNN
+F 2 "" H 6050 1550 50  0001 C CNN
+F 3 "" H 6050 1550 50  0001 C CNN
+	1    6050 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR026
+U 1 1 5E8D704F
+P 6050 2050
+F 0 "#PWR026" H 6050 1800 50  0001 C CNN
+F 1 "GND" H 6055 1877 50  0000 C CNN
+F 2 "" H 6050 2050 50  0001 C CNN
+F 3 "" H 6050 2050 50  0001 C CNN
+	1    6050 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6050 2050 6050 1950
+Wire Wire Line
+	6050 1650 6050 1550
+$Comp
+L power:+5V #PWR05
+U 1 1 5E8E74D5
+P 7800 4050
+F 0 "#PWR05" H 7800 3900 50  0001 C CNN
+F 1 "+5V" H 7815 4223 50  0000 C CNN
+F 2 "" H 7800 4050 50  0001 C CNN
+F 3 "" H 7800 4050 50  0001 C CNN
+	1    7800 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 4450 7450 4450
+Wire Wire Line
+	7450 4450 7450 4100
+Wire Wire Line
+	7450 4100 7800 4100
+Wire Wire Line
+	7800 4100 7800 4050
+Wire Wire Line
+	7800 4150 7800 4100
+Connection ~ 7800 4100
+$Comp
+L power:GND #PWR08
+U 1 1 5E8EE916
+P 7800 4850
+F 0 "#PWR08" H 7800 4600 50  0001 C CNN
+F 1 "GND" H 7805 4677 50  0000 C CNN
+F 2 "" H 7800 4850 50  0001 C CNN
+F 3 "" H 7800 4850 50  0001 C CNN
+	1    7800 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 4850 7800 4750
+Wire Wire Line
+	8100 4450 8250 4450
+Wire Wire Line
+	8250 4450 8250 5100
+Wire Wire Line
+	8250 5100 8550 5100
+Text Label 8300 5100 0    50   ~ 0
+CLK
+Wire Wire Line
+	4950 5400 4850 5400
+Text GLabel 10450 5400 2    50   Output ~ 0
+~REDLED
+Text GLabel 10000 5500 2    50   Output ~ 0
+~GRNLED
+$Comp
+L Transistor:Q_PNP_2N3906 Q1
+U 1 1 5E8520A1
+P 7150 4950
+F 0 "Q1" H 7340 4904 50  0000 L CNN
+F 1 "2N3906" H 7340 4995 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline_Wide" H 7350 4800 50  0001 L CNN
+F 3 "https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF" H 7350 5000 50  0001 C CNN
+F 4 "TBD" H 7350 4700 50  0001 L CNN "IPN"
+F 5 "ON Semiconductor:2N3906TF" H 7350 4600 50  0001 L CNN "MPN"
+	1    7150 4950
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	7250 5150 7250 5300
+Wire Wire Line
+	7250 5300 8050 5300
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R1
+U 1 1 5E865007
+P 6700 4950
+F 0 "R1" V 6600 4950 50  0000 C CNN
+F 1 "10k" V 6700 4950 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6950 4950 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 6780 4950 50  0001 C CNN
+F 4 "TBD" V 7000 4950 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 7050 4950 50  0001 C CNN "MPN"
+	1    6700 4950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6850 4950 6950 4950
+Text GLabel 6400 4950 0    50   Input ~ 0
+EA
+Wire Wire Line
+	6400 4950 6550 4950
+Text GLabel 10000 5300 2    50   Output ~ 0
+EA
+Wire Wire Line
+	10000 5300 9750 5300
+Wire Wire Line
+	10000 5500 9750 5500
+Wire Wire Line
+	9750 5400 10450 5400
+Text GLabel 2800 5200 2    50   Output ~ 0
+RST
+Text GLabel 8450 6000 0    50   Input ~ 0
+RST
+Wire Wire Line
+	8450 6000 8550 6000
+$Comp
+L power:GND #PWR07
+U 1 1 5E855078
+P 8450 4500
+F 0 "#PWR07" H 8450 4250 50  0001 C CNN
+F 1 "GND" H 8455 4327 50  0000 C CNN
+F 2 "" H 8450 4500 50  0001 C CNN
+F 3 "" H 8450 4500 50  0001 C CNN
+	1    8450 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 4500 8450 4400
+Wire Wire Line
+	8450 4400 8550 4400
+$Comp
+L Transistor:Q_PNP_2N3906 Q3
+U 1 1 5E85AD78
+P 4700 6100
+F 0 "Q3" H 4890 6054 50  0000 L CNN
+F 1 "2N3906" H 4890 6145 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline_Wide" H 4900 5950 50  0001 L CNN
+F 3 "https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF" H 4900 6150 50  0001 C CNN
+F 4 "TBD" H 4900 5850 50  0001 L CNN "IPN"
+F 5 "ON Semiconductor:2N3906TF" H 4900 5750 50  0001 L CNN "MPN"
+	1    4700 6100
+	1    0    0    1   
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R4
+U 1 1 5E85BF4A
+P 4250 6100
+F 0 "R4" V 4150 6100 50  0000 C CNN
+F 1 "10k" V 4250 6100 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4500 6100 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 4330 6100 50  0001 C CNN
+F 4 "TBD" V 4550 6100 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 4600 6100 50  0001 C CNN "MPN"
+	1    4250 6100
+	0    1    1    0   
+$EndComp
+Text GLabel 4000 6100 0    50   Input ~ 0
+~GRNLED
+Wire Wire Line
+	4000 6100 4100 6100
+Wire Wire Line
+	4400 6100 4500 6100
+$Comp
+L power:+5V #PWR016
+U 1 1 5E868184
+P 4800 5800
+F 0 "#PWR016" H 4800 5650 50  0001 C CNN
+F 1 "+5V" H 4815 5973 50  0000 C CNN
+F 2 "" H 4800 5800 50  0001 C CNN
+F 3 "" H 4800 5800 50  0001 C CNN
+	1    4800 5800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 5800 4800 5900
+$Comp
+L power:GND #PWR029
+U 1 1 5E86E4E8
+P 4400 5450
+F 0 "#PWR029" H 4400 5200 50  0001 C CNN
+F 1 "GND" H 4405 5277 50  0000 C CNN
+F 2 "" H 4400 5450 50  0001 C CNN
+F 3 "" H 4400 5450 50  0001 C CNN
+	1    4400 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 5450 4400 5400
+Wire Wire Line
+	4400 5400 4450 5400
+$Comp
+L Resistor:R_332_1%_0p25W_axial R6
+U 1 1 5E8827A7
+P 2250 5400
+F 0 "R6" V 2150 5400 50  0000 C CNN
+F 1 "332" V 2250 5400 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2500 5400 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 2330 5400 50  0001 C CNN
+F 4 "TBD" V 2550 5400 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD332R" V 2600 5400 50  0001 C CNN "MPN"
+	1    2250 5400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2100 5400 2000 5400
+$Comp
+L Transistor:Q_PNP_2N3906 Q2
+U 1 1 5E8827B4
+P 1850 6100
+F 0 "Q2" H 2040 6054 50  0000 L CNN
+F 1 "2N3906" H 2040 6145 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline_Wide" H 2050 5950 50  0001 L CNN
+F 3 "https://www.onsemi.com/pub/Collateral/PZT3906-D.PDF" H 2050 6150 50  0001 C CNN
+F 4 "TBD" H 2050 5850 50  0001 L CNN "IPN"
+F 5 "ON Semiconductor:2N3906TF" H 2050 5750 50  0001 L CNN "MPN"
+	1    1850 6100
+	1    0    0    1   
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R3
+U 1 1 5E8827C0
+P 1400 6100
+F 0 "R3" V 1300 6100 50  0000 C CNN
+F 1 "10k" V 1400 6100 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1650 6100 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 1480 6100 50  0001 C CNN
+F 4 "TBD" V 1700 6100 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 1750 6100 50  0001 C CNN "MPN"
+	1    1400 6100
+	0    1    1    0   
+$EndComp
+Text GLabel 1150 6100 0    50   Input ~ 0
+~REDLED
+Wire Wire Line
+	1150 6100 1250 6100
+Wire Wire Line
+	1550 6100 1650 6100
+$Comp
+L power:+5V #PWR015
+U 1 1 5E8827CD
+P 1950 5800
+F 0 "#PWR015" H 1950 5650 50  0001 C CNN
+F 1 "+5V" H 1965 5973 50  0000 C CNN
+F 2 "" H 1950 5800 50  0001 C CNN
+F 3 "" H 1950 5800 50  0001 C CNN
+	1    1950 5800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1950 5800 1950 5900
+$Comp
+L power:GND #PWR028
+U 1 1 5E8827D8
+P 1550 5450
+F 0 "#PWR028" H 1550 5200 50  0001 C CNN
+F 1 "GND" H 1555 5277 50  0000 C CNN
+F 2 "" H 1550 5450 50  0001 C CNN
+F 3 "" H 1550 5450 50  0001 C CNN
+	1    1550 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 5450 1550 5400
+Wire Wire Line
+	1550 5400 1600 5400
+$Comp
+L Switch:NKK_UB15SKG035C-CC S2
+U 1 1 5E82BE3E
+P 1800 5100
+F 0 "S2" H 1800 5385 50  0000 C CNN
+F 1 "NKK_UB15SKG035C-CC" H 1800 5294 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_NKK_UB15SKG035C-CC" H 1800 4500 50  0001 C CNN
+F 3 "" H 1850 4900 50  0001 C CNN
+F 4 "TBD" H 1800 4400 50  0001 C CNN "IPN"
+F 5 "NKK:UB15SKG035C-CC" H 1800 4300 50  0001 C CNN "MPN"
+	1    1800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Capacitor:C_10uF_10V_X7R_radial C5
+U 1 1 5E8A610B
+P 2700 4950
+F 0 "C5" H 2815 4996 50  0000 L CNN
+F 1 "10uF" H 2815 4905 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm" H 2725 4775 50  0001 L CNN
+F 3 "https://product.tdk.com/info/en/catalog/datasheets/leadmlcc_halogenfree_fg_en.pdf" H 2700 4950 50  0001 C CNN
+F 4 "TBD" H 2725 4700 50  0001 L CNN "IPN"
+F 5 "TDK:FG24X7R1A106KRT06" H 2725 4625 50  0001 L CNN "MPN"
+	1    2700 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Capacitor:C_0.1uF_50V_X7R_radial C2
+U 1 1 5E8A6CF3
+P 5150 1800
+F 0 "C2" H 5265 1846 50  0000 L CNN
+F 1 "0.1uF" H 5265 1755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm" H 5175 1625 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/45171/kseries.pdf" H 5150 1800 50  0001 C CNN
+F 4 "TBD" H 5175 1550 50  0001 L CNN "IPN"
+F 5 "Vishay:K104K10X7RF5UL2" H 5175 1475 50  0001 L CNN "MPN"
+	1    5150 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Capacitor:C_0.1uF_50V_X7R_radial C3
+U 1 1 5E8A7160
+P 5600 1800
+F 0 "C3" H 5715 1846 50  0000 L CNN
+F 1 "0.1uF" H 5715 1755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm" H 5625 1625 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/45171/kseries.pdf" H 5600 1800 50  0001 C CNN
+F 4 "TBD" H 5625 1550 50  0001 L CNN "IPN"
+F 5 "Vishay:K104K10X7RF5UL2" H 5625 1475 50  0001 L CNN "MPN"
+	1    5600 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Capacitor:C_0.1uF_50V_X7R_radial C4
+U 1 1 5E8A746F
+P 6050 1800
+F 0 "C4" H 6165 1846 50  0000 L CNN
+F 1 "0.1uF" H 6165 1755 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm" H 6075 1625 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/45171/kseries.pdf" H 6050 1800 50  0001 C CNN
+F 4 "TBD" H 6075 1550 50  0001 L CNN "IPN"
+F 5 "Vishay:K104K10X7RF5UL2" H 6075 1475 50  0001 L CNN "MPN"
+	1    6050 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R8
+U 1 1 5E8A7E17
+P 2700 5450
+F 0 "R8" V 2600 5450 50  0000 C CNN
+F 1 "10k" V 2700 5450 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2950 5450 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 2780 5450 50  0001 C CNN
+F 4 "TBD" V 3000 5450 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 3050 5450 50  0001 C CNN "MPN"
+	1    2700 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR021
+U 1 1 5E8A8E2E
+P 2700 4700
+F 0 "#PWR021" H 2700 4550 50  0001 C CNN
+F 1 "+5V" H 2715 4873 50  0000 C CNN
+F 2 "" H 2700 4700 50  0001 C CNN
+F 3 "" H 2700 4700 50  0001 C CNN
+	1    2700 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR030
+U 1 1 5E8A973E
+P 2700 5700
+F 0 "#PWR030" H 2700 5450 50  0001 C CNN
+F 1 "GND" H 2705 5527 50  0000 C CNN
+F 2 "" H 2700 5700 50  0001 C CNN
+F 3 "" H 2700 5700 50  0001 C CNN
+	1    2700 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 5700 2700 5600
+Wire Wire Line
+	2700 5100 2700 5200
+Wire Wire Line
+	2800 5200 2700 5200
+Connection ~ 2700 5200
+Wire Wire Line
+	2700 5200 2700 5300
+Wire Wire Line
+	2700 4800 2700 4700
+$Comp
+L power:+5V #PWR027
+U 1 1 5E8CAEEF
+P 1350 5200
+F 0 "#PWR027" H 1350 5050 50  0001 C CNN
+F 1 "+5V" H 1365 5373 50  0000 C CNN
+F 2 "" H 1350 5200 50  0001 C CNN
+F 3 "" H 1350 5200 50  0001 C CNN
+	1    1350 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 5200 1350 5250
+Wire Wire Line
+	1350 5250 1500 5250
+Wire Wire Line
+	1500 5250 1500 5100
+Wire Wire Line
+	1500 5100 1600 5100
+Wire Wire Line
+	4450 5100 4400 5100
+Wire Wire Line
+	4400 5100 4400 5400
+Connection ~ 4400 5400
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R5
+U 1 1 5E8EB7EB
+P 5350 4950
+F 0 "R5" V 5250 4950 50  0000 C CNN
+F 1 "10k" V 5350 4950 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5600 4950 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 5430 4950 50  0001 C CNN
+F 4 "TBD" V 5650 4950 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 5700 4950 50  0001 C CNN "MPN"
+	1    5350 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR022
+U 1 1 5E8EBF21
+P 5350 4700
+F 0 "#PWR022" H 5350 4550 50  0001 C CNN
+F 1 "+5V" H 5365 4873 50  0000 C CNN
+F 2 "" H 5350 4700 50  0001 C CNN
+F 3 "" H 5350 4700 50  0001 C CNN
+	1    5350 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 4700 5350 4800
+Wire Wire Line
+	5350 5200 5350 5100
+Text GLabel 5450 5200 2    50   Output ~ 0
+~GRNBTN
+Wire Wire Line
+	5450 5200 5350 5200
+Text GLabel 10450 5600 2    50   Input ~ 0
+~GRNBTN
+Wire Wire Line
+	10450 5600 9750 5600
+Text Notes 6550 7450 0    100  ~ 0
+Header for connection to\nFTDI TTL-232-5V cable.
+Text Notes 1700 6750 0    100  ~ 0
+Reset button\nwith red LED.
+Text Notes 4150 6750 0    100  ~ 0
+Start button\nwith green LED.
+Text Notes 9350 7450 0    100  ~ 0
+ZIF socket for\n8051 to be dumped.
+Text Label 8250 6200 0    50   ~ 0
+RXD
+Text Label 8250 6300 0    50   ~ 0
+TXD
+NoConn ~ 9750 6900
+NoConn ~ 8550 6900
+NoConn ~ 8550 6800
+NoConn ~ 8550 6700
+NoConn ~ 8550 6600
+NoConn ~ 8550 6500
+NoConn ~ 8550 6400
+NoConn ~ 2000 5000
+NoConn ~ 4850 5000
+NoConn ~ 2150 1750
+Text Notes 1850 1050 0    100  ~ 0
+5 VDC Power Input
+Text Label 14700 5000 0    50   ~ 0
+AD6
+Text Label 14700 4900 0    50   ~ 0
+AD5
+Text Label 14700 4800 0    50   ~ 0
+AD4
+Text Label 13150 4400 0    50   ~ 0
+A0
+Text Label 13150 4500 0    50   ~ 0
+A1
+Text Label 13150 4600 0    50   ~ 0
+A2
+Text Label 13150 4700 0    50   ~ 0
+A3
+Text Label 13150 4800 0    50   ~ 0
+A4
+Text Label 13150 4900 0    50   ~ 0
+A5
+Text Label 13150 5000 0    50   ~ 0
+A6
+Text Label 13150 5100 0    50   ~ 0
+A7
+Entry Wire Line
+	12600 4400 12700 4300
+Entry Wire Line
+	12600 4500 12700 4400
+Entry Wire Line
+	12600 4600 12700 4500
+Entry Wire Line
+	12600 4700 12700 4600
+Entry Wire Line
+	12600 4800 12700 4700
+Entry Wire Line
+	12600 4900 12700 4800
+Entry Wire Line
+	12600 5000 12700 4900
+Entry Wire Line
+	12600 5100 12700 5000
+Entry Wire Line
+	12950 4300 13050 4400
+Entry Wire Line
+	12950 4400 13050 4500
+Entry Wire Line
+	12950 4500 13050 4600
+Entry Wire Line
+	12950 4600 13050 4700
+Entry Wire Line
+	12950 4700 13050 4800
+Entry Wire Line
+	12950 4800 13050 4900
+Entry Wire Line
+	12950 4900 13050 5000
+Entry Wire Line
+	12950 5000 13050 5100
+Wire Wire Line
+	13300 5100 13050 5100
+Wire Wire Line
+	13300 5000 13050 5000
+Wire Wire Line
+	13300 4900 13050 4900
+Wire Wire Line
+	13300 4800 13050 4800
+Wire Wire Line
+	13300 4700 13050 4700
+Wire Wire Line
+	13300 4600 13050 4600
+Wire Wire Line
+	13300 4500 13050 4500
+Wire Wire Line
+	13300 4400 13050 4400
+Wire Wire Line
+	12400 5100 12600 5100
+Wire Wire Line
+	12400 5000 12600 5000
+Wire Wire Line
+	12400 4900 12600 4900
+Wire Wire Line
+	12400 4800 12600 4800
+Wire Wire Line
+	12400 4700 12600 4700
+Wire Wire Line
+	12400 4600 12600 4600
+Wire Wire Line
+	12400 4500 12600 4500
+Wire Wire Line
+	12400 4400 12600 4400
+Wire Bus Line
+	12700 4200 12950 4200
+$Comp
+L Capacitor:C_10uF_10V_X7R_radial C6
+U 1 1 5E97A766
+P 2600 1850
+F 0 "C6" H 2715 1896 50  0000 L CNN
+F 1 "10uF" H 2715 1805 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm" H 2625 1675 50  0001 L CNN
+F 3 "https://product.tdk.com/info/en/catalog/datasheets/leadmlcc_halogenfree_fg_en.pdf" H 2600 1850 50  0001 C CNN
+F 4 "TBD" H 2625 1600 50  0001 L CNN "IPN"
+F 5 "TDK:FG24X7R1A106KRT06" H 2625 1525 50  0001 L CNN "MPN"
+	1    2600 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR031
+U 1 1 5E9DEB57
+P 7250 4650
+F 0 "#PWR031" H 7250 4500 50  0001 C CNN
+F 1 "+5V" H 7265 4823 50  0000 C CNN
+F 2 "" H 7250 4650 50  0001 C CNN
+F 3 "" H 7250 4650 50  0001 C CNN
+	1    7250 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7250 4650 7250 4750
+$Comp
+L Resistor:R_332_1%_0p25W_axial R9
+U 1 1 5E889540
+P 2250 5200
+F 0 "R9" V 2150 5200 50  0000 C CNN
+F 1 "332" V 2250 5200 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2500 5200 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 2330 5200 50  0001 C CNN
+F 4 "TBD" V 2550 5200 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD332R" V 2600 5200 50  0001 C CNN "MPN"
+	1    2250 5200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	13100 6300 13300 6300
+$Comp
+L power:GND #PWR033
+U 1 1 5E9192EE
+P 13050 6000
+F 0 "#PWR033" H 13050 5750 50  0001 C CNN
+F 1 "GND" H 13055 5827 50  0000 C CNN
+F 2 "" H 13050 6000 50  0001 C CNN
+F 3 "" H 13050 6000 50  0001 C CNN
+	1    13050 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13300 6200 13300 5950
+Wire Wire Line
+	2100 5200 2000 5200
+Wire Wire Line
+	2400 5200 2700 5200
+Wire Wire Line
+	1950 6300 1950 6350
+Wire Wire Line
+	1950 6350 2500 6350
+Wire Wire Line
+	2500 6350 2500 5400
+Wire Wire Line
+	2500 5400 2400 5400
+Wire Wire Line
+	4850 5200 5350 5200
+Connection ~ 5350 5200
+Wire Wire Line
+	4800 6300 4800 6350
+Wire Wire Line
+	4800 6350 5400 6350
+Wire Wire Line
+	5400 6350 5400 5400
+Wire Wire Line
+	5400 5400 5250 5400
+$Comp
+L Switch:CK_1101M2S3CQE2 S1
+U 1 1 5E91843A
+P 3500 1850
+F 0 "S1" H 3367 1469 60  0000 C CNN
+F 1 "CK_1101M2S3CQE2" H 3628 1797 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_CK_1101M2S3CQE2" H 3500 1300 60  0001 C CNN
+F 3 "" H 3500 2300 60  0000 C CNN
+F 4 "TBD" H 3500 1500 60  0001 C CNN "IPN"
+F 5 "CK:1101M2S3CQE2" H 3500 1400 60  0001 C CNN "MPN"
+	1    3500 1850
+	1    0    0    1   
+$EndComp
+$Comp
+L Connector_Barrel:CUI_PJ-050AH J2
+U 1 1 5E861579
+P 1850 1750
+F 0 "J2" H 1850 2067 50  0000 C CNN
+F 1 "CUI_PJ-050AH" H 1850 1976 50  0000 C CNN
+F 2 "Connector_BarrelJack:BarrelJack_Horizontal_CUI_PJ-050AH" H 1850 1350 50  0001 C CNN
+F 3 "~" H 1900 1710 50  0001 C CNN
+F 4 "TBD" H 1850 1250 50  0001 C CNN "IPN"
+F 5 "CUI:PJ-050AH" H 1850 1150 50  0001 C CNN "MPN"
+	1    1850 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L TestPoint:TestPoint_Mini_Black TP2
+U 1 1 5E828F58
+P 2900 1350
+F 0 "TP2" H 2900 1550 50  0000 C CNN
+F 1 "TestPoint_Mini_Black" H 2900 1650 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Keystone_5001" H 2950 1700 50  0001 C CNN
+F 3 "~" H 3100 1350 50  0001 C CNN
+F 4 "TBD" H 2900 1900 50  0001 C CNN "IPN"
+F 5 "Keystone:5001" H 2900 1800 50  0001 C CNN "MPN"
+	1    2900 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 1850 2400 1850
+Wire Wire Line
+	2400 1850 2400 2050
+Wire Wire Line
+	2400 2050 2600 2050
+Wire Wire Line
+	2150 1650 2600 1650
+Connection ~ 2600 1650
+Wire Wire Line
+	2600 1650 3150 1650
+Wire Wire Line
+	2600 1700 2600 1650
+Wire Wire Line
+	2600 2000 2600 2050
+Connection ~ 2600 2050
+Wire Wire Line
+	2600 2050 3150 2050
+Wire Wire Line
+	2600 2100 2600 2050
+Wire Wire Line
+	3000 1900 3000 1950
+Wire Wire Line
+	3000 1950 3150 1950
+Wire Wire Line
+	3150 1950 3150 1850
+$Comp
+L power:GND #PWR032
+U 1 1 5E96378A
+P 2900 1400
+F 0 "#PWR032" H 2900 1150 50  0001 C CNN
+F 1 "GND" H 2905 1227 50  0000 C CNN
+F 2 "" H 2900 1400 50  0001 C CNN
+F 3 "" H 2900 1400 50  0001 C CNN
+	1    2900 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 1400 2900 1350
+Wire Wire Line
+	2600 1350 2600 1650
+$Comp
+L Switch:Copal_S-2150 S4
+U 1 1 5E927003
+P 2750 8350
+F 0 "S4" H 2882 8817 50  0000 C CNN
+F 1 "Copal_S-2150" H 2882 8726 50  0000 C CNN
+F 2 "Button_Switch_THT:Copal_S-2150" H 2800 7700 50  0001 C CNN
+F 3 "~" H 2725 8375 50  0001 C CNN
+F 4 "TBD" H 2750 7900 50  0001 C CNN "IPN"
+F 5 "Copal:S-2150" H 2750 7800 50  0001 C CNN "MPN"
+	1    2750 8350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR035
+U 1 1 5E92B1A7
+P 3350 8650
+F 0 "#PWR035" H 3350 8400 50  0001 C CNN
+F 1 "GND" H 3355 8477 50  0000 C CNN
+F 2 "" H 3350 8650 50  0001 C CNN
+F 3 "" H 3350 8650 50  0001 C CNN
+	1    3350 8650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 8550 3350 8550
+Wire Wire Line
+	3350 8550 3350 8650
+Text GLabel 9850 6000 2    50   Input ~ 0
+~R4k
+Text GLabel 10100 5900 2    50   Input ~ 0
+~R8k
+Text GLabel 9850 5800 2    50   Input ~ 0
+~R16k
+Text GLabel 10100 5700 2    50   Input ~ 0
+~R32k
+Wire Wire Line
+	9850 6000 9750 6000
+Wire Wire Line
+	9850 5800 9750 5800
+Text GLabel 4100 8100 2    50   Output ~ 0
+~R4k
+Text GLabel 4400 8200 2    50   Output ~ 0
+~R8k
+Text GLabel 4100 8300 2    50   Output ~ 0
+~R16k
+Text GLabel 4400 8400 2    50   Output ~ 0
+~R32k
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R10
+U 1 1 5E961A7F
+P 3400 7850
+F 0 "R10" V 3300 7850 50  0000 C CNN
+F 1 "10k" V 3400 7850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3650 7850 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 3480 7850 50  0001 C CNN
+F 4 "TBD" V 3700 7850 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 3750 7850 50  0001 C CNN "MPN"
+	1    3400 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R11
+U 1 1 5E962690
+P 3600 7850
+F 0 "R11" V 3500 7850 50  0000 C CNN
+F 1 "10k" V 3600 7850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3850 7850 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 3680 7850 50  0001 C CNN
+F 4 "TBD" V 3900 7850 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 3950 7850 50  0001 C CNN "MPN"
+	1    3600 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R12
+U 1 1 5E962C13
+P 3800 7850
+F 0 "R12" V 3700 7850 50  0000 C CNN
+F 1 "10k" V 3800 7850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4050 7850 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 3880 7850 50  0001 C CNN
+F 4 "TBD" V 4100 7850 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 4150 7850 50  0001 C CNN "MPN"
+	1    3800 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Resistor:R_10k_1%_0p25W_axial R13
+U 1 1 5E963026
+P 4000 7850
+F 0 "R13" V 3900 7850 50  0000 C CNN
+F 1 "10k" V 4000 7850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4250 7850 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 4080 7850 50  0001 C CNN
+F 4 "TBD" V 4300 7850 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD10K0" V 4350 7850 50  0001 C CNN "MPN"
+	1    4000 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR034
+U 1 1 5E963409
+P 3700 7600
+F 0 "#PWR034" H 3700 7450 50  0001 C CNN
+F 1 "+5V" H 3715 7773 50  0000 C CNN
+F 2 "" H 3700 7600 50  0001 C CNN
+F 3 "" H 3700 7600 50  0001 C CNN
+	1    3700 7600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 7700 3400 7650
+Wire Wire Line
+	3400 7650 3600 7650
+Wire Wire Line
+	4000 7650 4000 7700
+Wire Wire Line
+	3800 7700 3800 7650
+Connection ~ 3800 7650
+Wire Wire Line
+	3800 7650 4000 7650
+Wire Wire Line
+	3600 7700 3600 7650
+Connection ~ 3600 7650
+Wire Wire Line
+	3600 7650 3700 7650
+Wire Wire Line
+	3700 7600 3700 7650
+Connection ~ 3700 7650
+Wire Wire Line
+	3700 7650 3800 7650
+Wire Wire Line
+	4100 8100 3400 8100
+Wire Wire Line
+	3250 8200 3600 8200
+Wire Wire Line
+	4100 8300 3800 8300
+Wire Wire Line
+	3250 8400 4000 8400
+Wire Wire Line
+	3400 8000 3400 8100
+Connection ~ 3400 8100
+Wire Wire Line
+	3400 8100 3250 8100
+Wire Wire Line
+	3600 8000 3600 8200
+Connection ~ 3600 8200
+Wire Wire Line
+	3800 8000 3800 8300
+Connection ~ 3800 8300
+Wire Wire Line
+	3800 8300 3250 8300
+Wire Wire Line
+	4000 8000 4000 8400
+Connection ~ 4000 8400
+Text Notes 2900 9750 0    100  ~ 0
+Dump Size:\n1: 8051 (4k)\n2: 8052 (8k)\n3: 8054 (16k)\n4: 8058 (32k)
+$Comp
+L LED:LED D1
+U 1 1 5E93C724
+P 4250 2000
+F 0 "D1" V 4243 1882 50  0000 R CNN
+F 1 "WP7113GD" H 4243 2125 50  0001 C CNN
+F 2 "LED_THT:LED_D5.0mm_Green_Kingbright_WP7113" H 4250 2000 50  0001 C CNN
+F 3 "~" H 4250 2100 50  0001 C CNN
+F 4 "TBD" H 4250 1800 60  0001 C CNN "IPN"
+F 5 "Kingbright:WP7113GD" H 4250 1700 60  0001 C CNN "MPN"
+	1    4250 2000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Resistor:R_332_1%_0p25W_axial R14
+U 1 1 5E9407F3
+P 4250 1600
+F 0 "R14" V 4150 1600 50  0000 C CNN
+F 1 "332" V 4250 1600 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4500 1600 50  0001 C CNN
+F 3 "https://www.seielect.com/catalog/sei-rnf_rnmf.pdf" V 4330 1600 50  0001 C CNN
+F 4 "TBD" V 4550 1600 50  0001 C CNN "IPN"
+F 5 "Stackpole:RNF14FTD332R" V 4600 1600 50  0001 C CNN "MPN"
+	1    4250 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR037
+U 1 1 5E9418C0
+P 4250 2250
+F 0 "#PWR037" H 4250 2000 50  0001 C CNN
+F 1 "GND" H 4255 2077 50  0000 C CNN
+F 2 "" H 4250 2250 50  0001 C CNN
+F 3 "" H 4250 2250 50  0001 C CNN
+	1    4250 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR036
+U 1 1 5E941E14
+P 4250 1350
+F 0 "#PWR036" H 4250 1200 50  0001 C CNN
+F 1 "+5V" H 4265 1523 50  0000 C CNN
+F 2 "" H 4250 1350 50  0001 C CNN
+F 3 "" H 4250 1350 50  0001 C CNN
+	1    4250 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 1350 4250 1450
+Wire Wire Line
+	4250 1750 4250 1850
+Wire Wire Line
+	4250 2150 4250 2250
+Wire Wire Line
+	13050 5950 13050 6000
+Wire Wire Line
+	13050 5950 13300 5950
+Text Notes 12900 7400 0    100  ~ 0
+32k x8 EEPROM\nAliased at 0x0000 and 0x8000
+Wire Wire Line
+	3600 8200 4400 8200
+Wire Wire Line
+	4000 8400 4400 8400
+Wire Wire Line
+	9750 5700 10100 5700
+Wire Wire Line
+	9750 5900 10100 5900
+Wire Bus Line
+	12800 5300 12800 6050
+Wire Bus Line
+	10200 6050 10200 6700
+Wire Bus Line
+	10950 3650 10950 5000
+Wire Bus Line
+	15000 3650 15000 5000
+Wire Bus Line
+	10200 3650 10200 5000
+Wire Bus Line
+	12700 4200 12700 5000
+Wire Bus Line
+	12950 4200 12950 5000
+$EndSCHEMATC

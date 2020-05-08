@@ -6,3 +6,6 @@ protection mechanisms.
 
 ![8051dumper Render](pcb/8051dumper.png)
 
+![First assembled 8051dumper board, with 8031 standing in for an 8051](pics/IMG_4191.jpg)
+
+![8051dumper board with FTDI TTL-232R-5V cable connected, and power supplied with clip leads](pics/IMG_4192.jpg)

@@ -21,13 +21,15 @@ IN_R4Kn         ALIAS   "P1.7"      ; Dump size knob: 8051 (4k)
 ;; Internal RAM (uninitialized data segment)
                 SEGU    "IRAM"
 
-                ORG     0x0000
-FOO:            DS      1
-BAR:            DS      7
+; 0x00..0x1F contains the four register banks.
+; 0x20..0x2F is the bit addressable area.
+; 0x30..0x7F is the scratch pad area.
+
+                ORG     0x0008
 
 ; Rest of RAM is stack. Initial stack pointer should be 1 byte before
 ; beginning of stack because PUSH operations pre-increment the stack pointer.
-STACK:          DS      0x80-$
+STACK:          DS      0x0080-$
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -167,7 +169,6 @@ SENDSTR:        CLR     A                       ; Get byte from ROM
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-
                 END
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

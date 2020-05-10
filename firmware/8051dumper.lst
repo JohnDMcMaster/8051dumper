@@ -1,4 +1,4 @@
-tpasm 1.5		Assembling on Tue May  5 19:38:08 2020
+tpasm 1.5		Assembling on Sat May  9 22:28:26 2020
 
 Source File: 8051dumper.asm
 
@@ -17,222 +17,423 @@ Line  Loc      Object/(Value) T	Source
 8     00000000                 	
 9     00000000                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 10    00000000                 	;; GPIOs
-11    00000000                 	OUT_EA          ALIAS   "P1.0"      ; Inverted and connected to EAn pin
-12    00000000                 	OUT_REDLEDn     ALIAS   "P1.1"      ; Red LED in RESET button
-13    00000000                 	OUT_GRNLEDn     ALIAS   "P1.2"      ; Green LED in START button
-14    00000000                 	IN_GRNBTNn      ALIAS   "P1.3"      ; Green START button
-15    00000000                 	IN_R32Kn        ALIAS   "P1.4"      ; Dump size knob: 8058 (32k)
-16    00000000                 	IN_R16Kn        ALIAS   "P1.5"      ; Dump size knob: 8054 (16k)
-17    00000000                 	IN_R8Kn         ALIAS   "P1.6"      ; Dump size knob: 8052 (8k)
-18    00000000                 	IN_R4Kn         ALIAS   "P1.7"      ; Dump size knob: 8051 (4k)
-19    00000000                 	
-20    00000000                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-21    00000000                 	;; Internal RAM (uninitialized data segment)
-22    00000000                 	                SEGU    "IRAM"
-23    00000000                 	
-24    00000000                 	                ORG     0x0000
-25    00000000                 	FOO:            DS      1
-26    00000001                 	BAR:            DS      7
-27    00000008                 	
-28    00000008                 	; Rest of RAM is stack. Initial stack pointer should be 1 byte before
-29    00000008                 	; beginning of stack because PUSH operations pre-increment the stack pointer.
-30    00000008                 	STACK:          DS      0x80-$
-31    00000080                 	
-32    00000080                 	
-33    00000080                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-34    00000080                 	;; Code segment starting at base of external program memory EEPROM
-35    00000080                 	                SEG     "code"
-36    00000000                 	
-37    00000000                 	                ; Reset vector (3 bytes)
-38    00000000                 	                ORG     0x0000
-39    00000000 02 80 4C        	RESET:          LJMP    INIT
-40    00000003                 	
-41    00000003                 	                ; External Request 0 Interrupt Service Routine (8 bytes)
-42    00000003                 	                ORG     0x0003
-43    00000003 80 FB           	ER0_ISR:        SJMP    RESET
-44    00000005                 	
-45    00000005                 	                ; Internal Timer/Counter 0 Interrupt Service Routine (8 bytes)
-46    00000005                 	                ORG     0x000B
-47    0000000B 80 F3           	ITC0_ISR:       SJMP    RESET
-48    0000000D                 	
-49    0000000D                 	                ; External Request 1 Interrupt Service Routine (8 bytes)
-50    0000000D                 	                ORG     0x0013
-51    00000013 80 EB           	ER1_ISR:        SJMP    RESET
-52    00000015                 	
-53    00000015                 	                ; Internal Timer/Counter 1 Interrupt Service Routine (8 bytes)
-54    00000015                 	                ORG     0x001B
-55    0000001B 80 E3           	ITC1_ISR:       SJMP    RESET
-56    0000001D                 	
-57    0000001D                 	                ; Internal Serial Port Interrupt Service Routine (8 bytes)
-58    0000001D                 	                ORG     0x0023
-59    00000023 80 DB           	ISP_ISR:        SJMP    RESET
-60    00000025                 	
-61    00000025                 	                ; Some other damn interrupt
-62    00000025                 	                ORG     0x002B
-63    0000002B 80 D3           	FOO_ISR:        SJMP    RESET
-64    0000002D                 	
-65    0000002D                 	
-66    0000002D                 	
-67    0000002D                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-68    0000002D                 	;; Following code/data will be accessed in a mirror image of the 32k EEPROM
-69    0000002D                 	;; at 0x8000. We will raise the EAn pin with a GPIO in order to overlay
-70    0000002D                 	;; internal ROM at address 0x0000. We will not use any interrupts because
-71    0000002D                 	;; interrupt vectors will contain unpredictable code from internal ROM.
-72    0000002D                 	
-73    0000002D                 	                ORG     0x0032
-74    00000032                 	                RORG    0x8032
-75    00000032                 	
-76    00000032 38 30 35 31 64  	IDSTR:          DB      "8051dumper v1.0 by NF6X", 0x0D, 0x0A, 0x00
+11    00000000                 	;;
+12    00000000                 	OUT_EA          ALIAS   "P1.0"      ; Inverted and connected to EAn pin
+13    00000000                 	OUT_REDLEDn     ALIAS   "P1.1"      ; Red LED in RESET button
+14    00000000                 	OUT_GRNLEDn     ALIAS   "P1.2"      ; Green LED in START button
+15    00000000                 	IN_GRNBTNn      ALIAS   "P1.3"      ; Green START button
+16    00000000                 	IN_R32Kn        ALIAS   "P1.4"      ; Dump size knob: 8058 (32k)
+17    00000000                 	IN_R16Kn        ALIAS   "P1.5"      ; Dump size knob: 8054 (16k)
+18    00000000                 	IN_R8Kn         ALIAS   "P1.6"      ; Dump size knob: 8052 (8k)
+19    00000000                 	IN_R4Kn         ALIAS   "P1.7"      ; Dump size knob: 8051 (4k)
+20    00000000                 	
+21    00000000                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+22    00000000                 	;; Internal RAM (uninitialized data segment)
+23    00000000                 	;;
+24    00000000                 	                SEGU    "IRAM"
+25    00000000                 	
+26    00000000                 	; 0x00..0x1F contains the four register banks.
+27    00000000                 	; 0x20..0x2F is the bit addressable area.
+28    00000000                 	; 0x30..0x7F is the scratch pad area.
+29    00000000                 	
+30    00000000                 	                ORG     0x0030
+31    00000030                 	IROMSIZE:       DS      1           ; High byte of internal ROM size
+32    00000031                 	CKSUM:          DS      1           ; Checksum accumulator for line
+33    00000032                 	HINYBBLE:       DS      1           ; Temp buffer for HEXBYTE
+34    00000033                 	LONYBBLE:       DS      1           ; Temp buffer for HEXBYTE
+35    00000034                 	
+36    00000034                 	; Intel Hex line buffer for 16 byte record
+37    00000034                 	BUF_START:      DS      1           ; Start code ":"
+38    00000035                 	BUF_BYTECOUNT:  DS      2           ; Byte count "10"
+39    00000037                 	BUF_ADDR:       DS      4           ; Start address of record
+40    0000003B                 	BUF_RECTYPE:    DS      1           ; Record type
+41    0000003C                 	BUF_DATA:       DS      32          ; Record data
+42    0000005C                 	BUF_CKSUM:      DS      2           ; Checksum
+43    0000005E                 	BUF_EOL:        DS      3           ; CRLF and terminating NUL
+44    00000061                 	
+45    00000061                 	
+46    00000061                 	
+47    00000061                 	; Rest of RAM is stack. Initial stack pointer should be 1 byte before
+48    00000061                 	; beginning of stack because PUSH operations pre-increment the stack pointer.
+49    00000061                 	STACK:          DS      0x0080-$
+50    00000080                 	
+51    00000080                 	
+52    00000080                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+53    00000080                 	;; Code segment starting at base of external program memory EEPROM
+54    00000080                 	;;
+55    00000080                 	                SEG     "code"
+56    00000000                 	
+57    00000000                 	                ; Reset vector (3 bytes)
+58    00000000                 	                ORG     0x0000
+59    00000000 02 80 81        	RESET:          LJMP    MAIN
+60    00000003                 	
+61    00000003                 	                ; External Request 0 Interrupt Service Routine (8 bytes)
+62    00000003                 	                ORG     0x0003
+63    00000003 02 81 88        	ER0_ISR:        LJMP    ERROR
+64    00000006                 	
+65    00000006                 	                ; Internal Timer/Counter 0 Interrupt Service Routine (8 bytes)
+66    00000006                 	                ORG     0x000B
+67    0000000B 02 81 88        	ITC0_ISR:       LJMP    ERROR
+68    0000000E                 	
+69    0000000E                 	                ; External Request 1 Interrupt Service Routine (8 bytes)
+70    0000000E                 	                ORG     0x0013
+71    00000013 02 81 88        	ER1_ISR:        LJMP    ERROR
+72    00000016                 	
+73    00000016                 	                ; Internal Timer/Counter 1 Interrupt Service Routine (8 bytes)
+74    00000016                 	                ORG     0x001B
+75    0000001B 02 81 88        	ITC1_ISR:       LJMP    ERROR
+76    0000001E                 	
+77    0000001E                 	                ; Internal Serial Port Interrupt Service Routine (8 bytes)
+78    0000001E                 	                ORG     0x0023
+79    00000023 02 81 88        	ISP_ISR:        LJMP    ERROR
+80    00000026                 	
+81    00000026                 	                ; Some other damn interrupt
+82    00000026                 	                ORG     0x002B
+83    0000002B 02 81 88        	FOO_ISR:        LJMP    ERROR
+84    0000002E                 	
+85    0000002E                 	
+86    0000002E                 	
+87    0000002E                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+88    0000002E                 	;; Following code/data will be accessed in a mirror image of the 32k EEPROM
+89    0000002E                 	;; at 0x8000. We will raise the EAn pin with a GPIO in order to overlay
+90    0000002E                 	;; internal ROM at address 0x0000. We will not use any interrupts because
+91    0000002E                 	;; interrupt vectors will contain unpredictable code from internal ROM.
+92    0000002E                 	;;
+93    0000002E                 	                ORG     0x0032
+94    00000032                 	                RORG    0x8032
+95    00000032                 	
+96    00000032 38 30 35 31 64  	IDSTR:          DB      "8051dumper v1.0 by NF6X", 0x0D, 0x0A, 0x00
                75 6D 70 65 72  
                20 76 31 2E 30  
                20 62 79 20 4E  
                46 36 58 0D 0A  
                00              
-77    0000004C                 	
-78    0000004C                 	;; 
-79    0000004C                 	INIT:
-80    0000004C 75 A8 00        	                MOV     IE, #0x00               ; Disable all interrupts
-81    0000004F 75 90 FF        	                MOV     P1, #0xFF               ; GPIOs all input/high
-82    00000052 75 81 07        	                MOV     SP, #STACK-1            ; Initialize stack pointer
-83    00000055                 	
-84    00000055                 	
-85    00000055                 	; Configure serial port for Mode 1, 9600 8n1
-86    00000055                 	;   SMOD = 0 ==> K = 1
-87    00000055                 	;   Oscillator frequency = 11.0592 MHz
-88    00000055                 	;   TH1 = 256 - (K * Fosc)/(32 * 12 * Baud)
-89    00000055                 	;   TH1 = 256 - (1 * 11059200)/(32 * 12 * 9600) = 253 = 0xFD
-90    00000055 75 87 00        	                MOV     PCON, #0x00             ; SMOD = 0
-91    00000058 75 98 50        	                MOV     SCON, #0x50             ; Mode 1
-92    0000005B 75 89 21        	                MOV     TMOD, #0x21             ; T1: Mode 2, T0: Mode 1
-93    0000005E 75 8D FD        	                MOV     TH1,  #0xFD             ; 9600 baud
-94    00000061 75 8B FD        	                MOV     TL1,  #0xFD             ; 9600 baud
-95    00000064                a	                SETB    TCON_TR1                ; Enable timer
-95    00000064 D2 8E          A	                SETB    TCON.6                
-96    00000066                 	
-97    00000066                 	
-98    00000066                 	; Send ID string 
-99    00000066 90 80 32        	                MOV     DPTR, #IDSTR
-100   00000069 11 B3           	                ACALL   SENDSTR
-101   0000006B                 	
-102   0000006B                 	
-103   0000006B                 	; Blink green LED until green START button pressed.
-104   0000006B                 	; Flash LED 2x per second at 20% duty cycle, checking
-105   0000006B                 	; button every 100ms.
-106   0000006B                a	WAITSTART:      CLR     OUT_GRNLEDn             ; On for 100ms
-106   0000006B C2 92          A	WAITSTART:      CLR     P1.2             
-107   0000006D 11 92           	                ACALL   DELAY100ms
-108   0000006F                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
-108   0000006F 30 93 18       A	                JNB     P1.3, DUMP        
-109   00000072                a	                SETB    OUT_GRNLEDn             ; Off for 400ms
-109   00000072 D2 92          A	                SETB    P1.2             
-110   00000074 11 92           	                ACALL   DELAY100ms
-111   00000076                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
-111   00000076 30 93 11       A	                JNB     P1.3, DUMP        
-112   00000079 11 92           	                ACALL   DELAY100ms
-113   0000007B                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
-113   0000007B 30 93 0C       A	                JNB     P1.3, DUMP        
-114   0000007E 11 92           	                ACALL   DELAY100ms
-115   00000080                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
-115   00000080 30 93 07       A	                JNB     P1.3, DUMP        
-116   00000083 11 92           	                ACALL   DELAY100ms
-117   00000085                a	                JNB     IN_GRNBTNn, DUMP        ; Button pressed?
-117   00000085 30 93 02       A	                JNB     P1.3, DUMP        
-118   00000088 80 E1           	                SJMP    WAITSTART
-119   0000008A                 	
-120   0000008A                 	; Read dump size knob and begin dumping code.
-121   0000008A                a	DUMP:           SETB    OUT_GRNLEDn             ; Green LED off
-121   0000008A D2 92          A	DUMP:           SETB    P1.2             
-122   0000008C                a	                CLR     OUT_REDLEDn             ; Red LED on
-122   0000008C C2 91          A	                CLR     P1.1             
-123   0000008E                a	                CLR     OUT_EA                  ; Select INTERNAL ROM at 0x0000
-123   0000008E C2 90          A	                CLR     P1.0                  
-124   00000090                 	
-125   00000090                 	                
-126   00000090                 	
-127   00000090 80 FE           	                SJMP    $
-128   00000092                 	
-129   00000092                 	
-130   00000092                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-131   00000092                 	;; Delay 100ms
-132   00000092                 	;; Uses Timer 0, delaying 50ms twice
-133   00000092                 	;; Oscillator frequency = 11.0592 MHz
-134   00000092                 	;;   ==> 50ms = 11059200 / (12 * 20) = 46080 = 0xB400 counts
-135   00000092                 	;;   ==> (TH0,TL0) = 0x10000 - 0xB400 = 0x4C00
-136   00000092                 	;; This all ignores subroutine call overhead and so forth.
-137   00000092                 	
-138   00000092                a	DELAY100ms:     CLR     TCON_TR0                ; Timer off
-138   00000092 C2 8C          A	DELAY100ms:     CLR     TCON.4                
-139   00000094 75 8C 4C        	                MOV     TH0, #0x4C              ; 50ms delay
-140   00000097 75 8A 00        	                MOV     TL0, #0x00
-141   0000009A                a	                CLR     TCON_TF0                ; Clear overflow
-141   0000009A C2 8D          A	                CLR     TCON.5                
-142   0000009C                a	                SETB    TCON_TR0                ; Timer on
-142   0000009C D2 8C          A	                SETB    TCON.4                
-143   0000009E                a	                JNB     TCON_TF0, $             ; Wait for overflow
-143   0000009E 30 8D FD       A	                JNB     TCON.5, $             
-144   000000A1                a	                CLR     TCON_TR0                ; Timer off
-144   000000A1 C2 8C          A	                CLR     TCON.4                
-145   000000A3 75 8C 4C        	                MOV     TH0, #0x4C              ; 50ms delay
-146   000000A6 75 8A 00        	                MOV     TL0, #0x00
-147   000000A9                a	                CLR     TCON_TF0                ; Clear overflow
-147   000000A9 C2 8D          A	                CLR     TCON.5                
-148   000000AB                a	                SETB    TCON_TR0                ; Timer on
-148   000000AB D2 8C          A	                SETB    TCON.4                
-149   000000AD                a	                JNB     TCON_TF0, $             ; Wait for overflow
-149   000000AD 30 8D FD       A	                JNB     TCON.5, $             
-150   000000B0                a	                CLR     TCON_TR0                ; Timer off
-150   000000B0 C2 8C          A	                CLR     TCON.4                
-151   000000B2 22              	                RET
-152   000000B3                 	
-153   000000B3                 	
-154   000000B3                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-155   000000B3                 	;; Send NUL-terminated string in ROM pointed to by DPTR.
-156   000000B3                 	;; Trashes A, DPTR
-157   000000B3                 	
-158   000000B3 E4              	SENDSTR:        CLR     A                       ; Get byte from ROM
-159   000000B4 93              	                MOVC    A, @A+DPTR
-160   000000B5 60 0A           	                JZ      .DONE                   ; Done if it is NUL
-161   000000B7                a	                CLR     SCON_TI                 ; Send byte
-161   000000B7 C2 99          A	                CLR     SCON.1                 
-162   000000B9 F5 99           	                MOV     SBUF, A
-163   000000BB                a	                JNB     SCON_TI, $              ; Loop until character sent
-163   000000BB 30 99 FD       A	                JNB     SCON.1, $              
-164   000000BE A3              	                INC     DPTR                    ; Send next byte
-165   000000BF 80 F2           	                SJMP    SENDSTR
-166   000000C1 22              	.DONE:          RET
-167   000000C2                 	
-168   000000C2                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-169   000000C2                 	;;
-170   000000C2                 	
-171   000000C2                 	                END
+97    0000004C 45 52 52 4F 52  	KNOBSTR:        DB      "ERROR: Could not read ROM size knob!", 0x0D, 0x0A, 0x00
+               3A 20 43 6F 75  
+               6C 64 20 6E 6F  
+               74 20 72 65 61  
+               64 20 52 4F 4D  
+               20 73 69 7A 65  
+               20 6B 6E 6F 62  
+               21 0D 0A 00     
+98    00000073 3A 30 30 30 30  	ENDSTR:         DB      ":00000001FF", 0x0D, 0x0A, 0x00
+               30 30 30 31 46  
+               46 0D 0A 00     
+99    00000081                 	
+100   00000081                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+101   00000081                 	;; Main entry point
+102   00000081                 	;;
+103   00000081                 	MAIN:
+104   00000081 75 A8 00        	                MOV     IE, #0x00               ; Disable all interrupts
+105   00000084 75 90 FF        	                MOV     P1, #0xFF               ; GPIOs all input/high
+106   00000087 75 81 60        	                MOV     SP, #STACK-1            ; Initialize stack pointer
+107   0000008A                a	                CLR     OUT_EA                  ; Select INTERNAL ROM at 0x0000
+107   0000008A C2 90          A	                CLR     P1.0                  
+108   0000008C                 	
+109   0000008C                 	
+110   0000008C                 	; Configure serial port for Mode 1, 9600 8n1
+111   0000008C                 	;   SMOD = 0 ==> K = 1
+112   0000008C                 	;   Oscillator frequency = 11.0592 MHz
+113   0000008C                 	;   TH1 = 256 - (K * Fosc)/(32 * 12 * Baud)
+114   0000008C                 	;   TH1 = 256 - (1 * 11059200)/(32 * 12 * 9600) = 253 = 0xFD
+115   0000008C 75 87 00        	                MOV     PCON, #0x00             ; SMOD = 0
+116   0000008F 75 98 50        	                MOV     SCON, #0x50             ; Mode 1
+117   00000092 75 89 21        	                MOV     TMOD, #0x21             ; T1: Mode 2, T0: Mode 1
+118   00000095 75 8D FD        	                MOV     TH1,  #0xFD             ; 9600 baud
+119   00000098 75 8B FD        	                MOV     TL1,  #0xFD             ; 9600 baud
+120   0000009B                a	                SETB    TCON_TR1                ; Enable timer
+120   0000009B D2 8E          A	                SETB    TCON.6                
+121   0000009D                 	
+122   0000009D                 	
+123   0000009D                 	; Send ID string 
+124   0000009D 90 80 32        	                MOV     DPTR, #IDSTR
+125   000000A0 31 AF           	                ACALL   SENDROM
+126   000000A2                 	
+127   000000A2                 	
+128   000000A2                 	; Blink green LED until green START button pressed.
+129   000000A2                 	; Flash LED 2x per second at 20% duty cycle, checking
+130   000000A2                 	; button every 100ms.
+131   000000A2                a	WAITSTART:      CLR     OUT_GRNLEDn             ; On for 100ms
+131   000000A2 C2 92          A	WAITSTART:      CLR     P1.2             
+132   000000A4 31 8E           	                ACALL   DELAY100ms
+133   000000A6                a	                JNB     IN_GRNBTNn, READKNOB    ; Button pressed?
+133   000000A6 30 93 18       A	                JNB     P1.3, READKNOB    
+134   000000A9                a	                SETB    OUT_GRNLEDn             ; Off for 400ms
+134   000000A9 D2 92          A	                SETB    P1.2             
+135   000000AB 31 8E           	                ACALL   DELAY100ms
+136   000000AD                a	                JNB     IN_GRNBTNn, READKNOB    ; Button pressed?
+136   000000AD 30 93 11       A	                JNB     P1.3, READKNOB    
+137   000000B0 31 8E           	                ACALL   DELAY100ms
+138   000000B2                a	                JNB     IN_GRNBTNn, READKNOB    ; Button pressed?
+138   000000B2 30 93 0C       A	                JNB     P1.3, READKNOB    
+139   000000B5 31 8E           	                ACALL   DELAY100ms
+140   000000B7                a	                JNB     IN_GRNBTNn, READKNOB    ; Button pressed?
+140   000000B7 30 93 07       A	                JNB     P1.3, READKNOB    
+141   000000BA 31 8E           	                ACALL   DELAY100ms
+142   000000BC                a	                JNB     IN_GRNBTNn, READKNOB    ; Button pressed?
+142   000000BC 30 93 02       A	                JNB     P1.3, READKNOB    
+143   000000BF 80 E1           	                SJMP    WAITSTART
+144   000000C1                 	
+145   000000C1                 	; Read dump size knob and begin dumping code.
+146   000000C1                a	READKNOB:       SETB    OUT_GRNLEDn             ; Green LED off
+146   000000C1 D2 92          A	READKNOB:       SETB    P1.2             
+147   000000C3                 	 
+148   000000C3                a	.TST32K:        JB      IN_R32Kn, .TST16K       ; Knob set to 32k?
+148   000000C3 20 94 05       A	.TST32K:        JB      P1.4, .TST16K       
+149   000000C6 75 30 80        	                MOV     IROMSIZE, #0x80         ; Yes, 32k
+150   000000C9 80 20           	                SJMP    INITBUF
+151   000000CB                a	.TST16K:        JB      IN_R16Kn, .TST8K        ; Knob set to 16k?
+151   000000CB 20 95 05       A	.TST16K:        JB      P1.5, .TST8K        
+152   000000CE 75 30 40        	                MOV     IROMSIZE, #0x40         ; Yes, 16k
+153   000000D1 80 18           	                SJMP    INITBUF
+154   000000D3                a	.TST8K:         JB      IN_R8Kn, .TST4K         ; Knob set to 8k?
+154   000000D3 20 96 05       A	.TST8K:         JB      P1.6, .TST4K         
+155   000000D6 75 30 20        	                MOV     IROMSIZE, #0x20         ; Yes, 8k
+156   000000D9 80 10           	                SJMP    INITBUF
+157   000000DB                a	.TST4K:         JB      IN_R4Kn, .TSTFAIL       ; Knob set to 4k?
+157   000000DB 20 97 05       A	.TST4K:         JB      P1.7, .TSTFAIL       
+158   000000DE 75 30 10        	                MOV     IROMSIZE, #0x10         ; Yes, 4k
+159   000000E1 80 08           	                SJMP    INITBUF
+160   000000E3 90 80 4C        	.TSTFAIL:       MOV     DPTR, #KNOBSTR          ; Cannot read knob!
+161   000000E6 31 AF           	                ACALL   SENDROM
+162   000000E8 02 81 88        	                LJMP    ERROR
+163   000000EB                 	
+164   000000EB                 	
+165   000000EB                 	; Initialize the line buffer and ROM data pointer
+166   000000EB 75 34 3A        	INITBUF:        MOV     BUF_START, #':'
+167   000000EE 75 35 31        	                MOV     BUF_BYTECOUNT, #'1'
+168   000000F1 75 36 30        	                MOV     BUF_BYTECOUNT+1, #'0'
+169   000000F4 75 5E 0D        	                MOV     BUF_EOL, #0x0D
+170   000000F7 75 5F 0A        	                MOV     BUF_EOL+1, #0x0A
+171   000000FA 75 60 00        	                MOV     BUF_EOL+2, #0x00
+172   000000FD 90 00 00        	                MOV     DPTR, #0000 
+173   00000100                 	
+174   00000100                 	
+175   00000100                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+176   00000100                 	;; Dump one Intel Hex record of 16 bytes at a time until done.
+177   00000100                 	;; Toggle red LED for each line to show activity.
+178   00000100                 	;;
+179   00000100 E5 83           	DUMPLOOP:       MOV     A, DPH                  ; Has DPTR hit end of IROM?
+180   00000102 B5 30 02        	                CJNE    A, IROMSIZE, DUMPRECORD
+181   00000105 80 2E           	                SJMP    EOF                     ; Finished with IROM
+182   00000107                 	
+183   00000107                 	; Dump one 16-byte record
+184   00000107                 	DUMPRECORD:
+185   00000107                a	                CPL     OUT_REDLEDn
+185   00000107 B2 91          A	                CPL     P1.1
+186   00000109 75 31 10        	                MOV     CKSUM, #0x10            ; Init checksum w/ record length
+187   0000010C 78 37           	                MOV     R0, #BUF_ADDR           ; Point to address field
+188   0000010E E5 83           	                MOV     A, DPH                  ; High address byte
+189   00000110 31 40           	                ACALL   HEXBYTE
+190   00000112 E5 82           	                MOV     A, DPL                  ; Low address byte
+191   00000114 31 40           	                ACALL   HEXBYTE
+192   00000116 E4              	                CLR     A                       ; Record type
+193   00000117 31 40           	                ACALL   HEXBYTE
+194   00000119                 	
+195   00000119 E4              	DUMPBYTE:       CLR     A                       ; Read byte from IROM
+196   0000011A 93              	                MOVC    A, @A+DPTR
+197   0000011B 31 40           	                ACALL   HEXBYTE                 ; Add it to line buffer
+198   0000011D E5 82           	                MOV     A, DPL                  ; End of record?
+199   0000011F 54 0F           	                ANL     A, #0x0F 
+200   00000121 C3              	                CLR     C
+201   00000122 94 0F           	                SUBB    A, #0x0F
+202   00000124 60 03           	                JZ      EOR                     ; Yes, at end of 16-byte record
+203   00000126 A3              	                INC     DPTR                    ; No, increment IROM pointer
+204   00000127 80 F0           	                SJMP    DUMPBYTE                ; Add next byte
+205   00000129                 	
+206   00000129 E5 31           	EOR:            MOV     A, CKSUM                ; Add checksum to record
+207   0000012B F4              	                CPL     A
+208   0000012C 24 01           	                ADD     A, #1
+209   0000012E 31 40           	                ACALL   HEXBYTE
+210   00000130 31 78           	                ACALL   SENDRECORD              ; Send out this record
+211   00000132 A3              	                INC     DPTR
+212   00000133                 	
+213   00000133 80 CB           	                SJMP    DUMPLOOP
+214   00000135                 	
+215   00000135                 	
+216   00000135                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+217   00000135                 	;; Send out end of file record, turn green LED on and red LED off,
+218   00000135                 	;; and loop forever.
+219   00000135                 	;;
+220   00000135 90 80 73        	EOF:            MOV     DPTR, #ENDSTR
+221   00000138 31 AF           	                ACALL   SENDROM
+222   0000013A                a	                CLR     OUT_GRNLEDn             ; Green LED on
+222   0000013A C2 92          A	                CLR     P1.2             
+223   0000013C                a	                SETB    OUT_REDLEDn             ; Red LED off
+223   0000013C D2 91          A	                SETB    P1.1             
+224   0000013E 80 FE           	                SJMP    $
+225   00000140                 	
+226   00000140                 	               
+227   00000140                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+228   00000140                 	;; Add hex representation of A to buffer at R0 and accumulate checksum.
+229   00000140                 	;;
+230   00000140 F5 32           	HEXBYTE:        MOV     HINYBBLE, A             ; Add byte to checksum
+231   00000142 F5 33           	                MOV     LONYBBLE, A
+232   00000144 25 31           	                ADD     A, CKSUM
+233   00000146 F5 31           	                MOV     CKSUM, A
+234   00000148                 	
+235   00000148 E5 32           	                MOV     A, HINYBBLE             ; Isolate high nybble
+236   0000014A C4              	                SWAP    A
+237   0000014B 54 0F           	                ANL     A, #0x0F
+238   0000014D 24 30           	                ADD     A, #'0'
+239   0000014F F5 32           	                MOV     HINYBBLE, A
+240   00000151 C3              	                CLR     C
+241   00000152 94 3A           	                SUBB    A, #':'
+242   00000154 40 06           	                JC      .LO
+243   00000156 E5 32           	                MOV     A, HINYBBLE
+244   00000158 24 07           	                ADD     A, #7
+245   0000015A F5 32           	                MOV     HINYBBLE, A
+246   0000015C                 	
+247   0000015C E5 33           	.LO:            MOV     A, LONYBBLE             ; Isolate low nybble
+248   0000015E 54 0F           	                ANL     A, #0x0F
+249   00000160 24 30           	                ADD     A, #'0'
+250   00000162 F5 33           	                MOV     LONYBBLE, A
+251   00000164 C3              	                CLR     C
+252   00000165 94 3A           	                SUBB    A, #':'
+253   00000167 40 06           	                JC      .STHI
+254   00000169 E5 33           	                MOV     A, LONYBBLE
+255   0000016B 24 07           	                ADD     A, #7
+256   0000016D F5 33           	                MOV     LONYBBLE, A
+257   0000016F                 	
+258   0000016F E5 32           	.STHI:          MOV     A, HINYBBLE             ; Store high nybble hex char
+259   00000171 F6              	                MOV     @R0, A
+260   00000172 08              	                INC     R0
+261   00000173 E5 33           	                MOV     A, LONYBBLE             ; Store low nybble hex char
+262   00000175 F6              	                MOV     @R0, A
+263   00000176 08              	                INC     R0
+264   00000177                 	
+265   00000177 22              	                RET
+266   00000178                 	
+267   00000178                 	
+268   00000178                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+269   00000178                 	;; Send out the current record. Trashes and R0.
+270   00000178                 	;;
+271   00000178 78 34           	SENDRECORD:     MOV     R0, #BUF_START          ; Init pointer
+272   0000017A E6              	.SENDCHAR:      MOV     A, @R0                  ; Get next char
+273   0000017B 60 0A           	                JZ      .DONE                   ; Done if it is NUL
+274   0000017D                a	                CLR     SCON_TI                 ; Send byte
+274   0000017D C2 99          A	                CLR     SCON.1                 
+275   0000017F F5 99           	                MOV     SBUF, A
+276   00000181                a	                JNB     SCON_TI, $              ; Loop until character sent
+276   00000181 30 99 FD       A	                JNB     SCON.1, $              
+277   00000184 08              	                INC     R0
+278   00000185 80 F3           	                SJMP    .SENDCHAR
+279   00000187 22              	.DONE:          RET
+280   00000188                 	
+281   00000188                 	
+282   00000188                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+283   00000188                 	;; Error handler
+284   00000188                 	;; Turn on red LED and loop forever
+285   00000188                 	;;
+286   00000188                a	ERROR:          SETB    OUT_GRNLEDn             ; Green LED off
+286   00000188 D2 92          A	ERROR:          SETB    P1.2             
+287   0000018A                a	                CLR     OUT_REDLEDn             ; Red LED on
+287   0000018A C2 91          A	                CLR     P1.1             
+288   0000018C 80 FE           	                SJMP    $
+289   0000018E                 	
+290   0000018E                 	
+291   0000018E                 	
+292   0000018E                 	
+293   0000018E                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+294   0000018E                 	;; Delay 100ms
+295   0000018E                 	;; Uses Timer 0, delaying 50ms twice
+296   0000018E                 	;; Oscillator frequency = 11.0592 MHz
+297   0000018E                 	;;   ==> 50ms = 11059200 / (12 * 20) = 46080 = 0xB400 counts
+298   0000018E                 	;;   ==> (TH0,TL0) = 0x10000 - 0xB400 = 0x4C00
+299   0000018E                 	;; This all ignores subroutine call overhead and so forth.
+300   0000018E                 	;;
+301   0000018E                a	DELAY100ms:     CLR     TCON_TR0                ; Timer off
+301   0000018E C2 8C          A	DELAY100ms:     CLR     TCON.4                
+302   00000190 75 8C 4C        	                MOV     TH0, #0x4C              ; 50ms delay
+303   00000193 75 8A 00        	                MOV     TL0, #0x00
+304   00000196                a	                CLR     TCON_TF0                ; Clear overflow
+304   00000196 C2 8D          A	                CLR     TCON.5                
+305   00000198                a	                SETB    TCON_TR0                ; Timer on
+305   00000198 D2 8C          A	                SETB    TCON.4                
+306   0000019A                a	                JNB     TCON_TF0, $             ; Wait for overflow
+306   0000019A 30 8D FD       A	                JNB     TCON.5, $             
+307   0000019D                a	                CLR     TCON_TR0                ; Timer off
+307   0000019D C2 8C          A	                CLR     TCON.4                
+308   0000019F 75 8C 4C        	                MOV     TH0, #0x4C              ; 50ms delay
+309   000001A2 75 8A 00        	                MOV     TL0, #0x00
+310   000001A5                a	                CLR     TCON_TF0                ; Clear overflow
+310   000001A5 C2 8D          A	                CLR     TCON.5                
+311   000001A7                a	                SETB    TCON_TR0                ; Timer on
+311   000001A7 D2 8C          A	                SETB    TCON.4                
+312   000001A9                a	                JNB     TCON_TF0, $             ; Wait for overflow
+312   000001A9 30 8D FD       A	                JNB     TCON.5, $             
+313   000001AC                a	                CLR     TCON_TR0                ; Timer off
+313   000001AC C2 8C          A	                CLR     TCON.4                
+314   000001AE 22              	                RET
+315   000001AF                 	
+316   000001AF                 	
+317   000001AF                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+318   000001AF                 	;; Send NUL-terminated string in ROM pointed to by DPTR.
+319   000001AF                 	;; Trashes A, DPTR
+320   000001AF                 	;;
+321   000001AF E4              	SENDROM:        CLR     A                       ; Get byte from ROM
+322   000001B0 93              	                MOVC    A, @A+DPTR
+323   000001B1 60 0A           	                JZ      .DONE                   ; Done if it is NUL
+324   000001B3                a	                CLR     SCON_TI                 ; Send byte
+324   000001B3 C2 99          A	                CLR     SCON.1                 
+325   000001B5 F5 99           	                MOV     SBUF, A
+326   000001B7                a	                JNB     SCON_TI, $              ; Loop until character sent
+326   000001B7 30 99 FD       A	                JNB     SCON.1, $              
+327   000001BA A3              	                INC     DPTR                    ; Send next byte
+328   000001BB 80 F2           	                SJMP    SENDROM
+329   000001BD 22              	.DONE:          RET
+330   000001BE                 	
+331   000001BE                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+332   000001BE                 	;;
+333   000001BE                 	                END
 
 Segment Listing
 MinAddr   MaxAddr   Segment
 --------  --------  -------
-00000000  000000C1  code
-00000000  0000007F  IRAM
+00000000  000001BD  code
+00000030  0000007F  IRAM
 
 Symbol Table Listing
 Value    U Name
 -------- - ----
 000000E0 * ACC
 000000F0 * B
-00000001 * BAR
-00008092   DELAY100ms
-00000083 * DPH
-00000082 * DPL
-0000808A   DUMP
+00000037   BUF_ADDR
+00000035   BUF_BYTECOUNT
+0000005C * BUF_CKSUM
+0000003C * BUF_DATA
+0000005E   BUF_EOL
+0000003B * BUF_RECTYPE
+00000034   BUF_START
+00000031   CKSUM
+0000818E   DELAY100ms
+00000083   DPH
+00000082   DPL
+00008119   DUMPBYTE
+00008100   DUMPLOOP
+00008107   DUMPRECORD
+00008073   ENDSTR
+00008135   EOF
+00008129   EOR
 00000003 * ER0_ISR
 00000013 * ER1_ISR
-00000000 * FOO
+00008188   ERROR
 0000002B * FOO_ISR
+00008140   HEXBYTE
+0000815C   HEXBYTE@LO
+0000816F   HEXBYTE@STHI
+00000032   HINYBBLE
 00008032   IDSTR
 000000A8   IE
-0000804C   INIT
+000080EB   INITBUF
 000000B8 * IP
+00000030   IROMSIZE
 00000023 * ISP_ISR
 0000000B * ITC0_ISR
 0000001B * ITC1_ISR
+0000804C   KNOBSTR
+00000033   LONYBBLE
+00008081   MAIN
 00000080 * P0
 00000090   P1
 000000A0 * P2
@@ -241,13 +442,22 @@ Value    U Name
 000000D0 * PSW
 000000CB * RCAP2H
 000000CA * RCAP2L
-00000000   RESET
+000080C1   READKNOB
+000080CB   READKNOB@TST16K
+000080C3 * READKNOB@TST32K
+000080DB   READKNOB@TST4K
+000080D3   READKNOB@TST8K
+000080E3   READKNOB@TSTFAIL
+00000000 * RESET
 00000099   SBUF
 00000098   SCON
-000080B3   SENDSTR
-000080C1   SENDSTR@DONE
+00008178   SENDRECORD
+00008187   SENDRECORD@DONE
+0000817A   SENDRECORD@SENDCHAR
+000081AF   SENDROM
+000081BD   SENDROM@DONE
 00000081   SP
-00000008   STACK
+00000061   STACK
 000000C8 * T2CON
 00000088   TCON
 0000008C   TH0
@@ -257,7 +467,7 @@ Value    U Name
 0000008B   TL1
 000000CC * TL2
 00000089   TMOD
-0000806B   WAITSTART
+000080A2   WAITSTART
 00000001 * __8051
 
 Assembled in 3 passes

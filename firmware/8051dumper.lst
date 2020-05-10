@@ -1,4 +1,4 @@
-tpasm 1.5		Assembling on Sat May  9 22:28:26 2020
+tpasm 1.5		Assembling on Sun May 10 00:05:09 2020
 
 Source File: 8051dumper.asm
 
@@ -87,9 +87,9 @@ Line  Loc      Object/(Value) T	Source
 78    0000001E                 	                ORG     0x0023
 79    00000023 02 81 88        	ISP_ISR:        LJMP    ERROR
 80    00000026                 	
-81    00000026                 	                ; Some other damn interrupt
+81    00000026                 	                ; 8052 TF2 and EXF2 Interrupt Service Routine (8 bytes)
 82    00000026                 	                ORG     0x002B
-83    0000002B 02 81 88        	FOO_ISR:        LJMP    ERROR
+83    0000002B 02 81 88        	TF2_ISR:        LJMP    ERROR
 84    0000002E                 	
 85    0000002E                 	
 86    0000002E                 	
@@ -306,7 +306,7 @@ Line  Loc      Object/(Value) T	Source
 266   00000178                 	
 267   00000178                 	
 268   00000178                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-269   00000178                 	;; Send out the current record. Trashes and R0.
+269   00000178                 	;; Send out the current record.
 270   00000178                 	;;
 271   00000178 78 34           	SENDRECORD:     MOV     R0, #BUF_START          ; Init pointer
 272   0000017A E6              	.SENDCHAR:      MOV     A, @R0                  ; Get next char
@@ -323,7 +323,7 @@ Line  Loc      Object/(Value) T	Source
 281   00000188                 	
 282   00000188                 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 283   00000188                 	;; Error handler
-284   00000188                 	;; Turn on red LED and loop forever
+284   00000188                 	;; Turn on red LED and loop forever.
 285   00000188                 	;;
 286   00000188                a	ERROR:          SETB    OUT_GRNLEDn             ; Green LED off
 286   00000188 D2 92          A	ERROR:          SETB    P1.2             
@@ -418,7 +418,6 @@ Value    U Name
 00000003 * ER0_ISR
 00000013 * ER1_ISR
 00008188   ERROR
-0000002B * FOO_ISR
 00008140   HEXBYTE
 0000815C   HEXBYTE@LO
 0000816F   HEXBYTE@STHI
@@ -460,6 +459,7 @@ Value    U Name
 00000061   STACK
 000000C8 * T2CON
 00000088   TCON
+0000002B * TF2_ISR
 0000008C   TH0
 0000008D   TH1
 000000CD * TH2

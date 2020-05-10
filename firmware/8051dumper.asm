@@ -78,9 +78,9 @@ ITC1_ISR:       LJMP    ERROR
                 ORG     0x0023
 ISP_ISR:        LJMP    ERROR
 
-                ; Some other damn interrupt
+                ; 8052 TF2 and EXF2 Interrupt Service Routine (8 bytes)
                 ORG     0x002B
-FOO_ISR:        LJMP    ERROR
+TF2_ISR:        LJMP    ERROR
 
 
 
@@ -266,7 +266,7 @@ HEXBYTE:        MOV     HINYBBLE, A             ; Add byte to checksum
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Send out the current record. Trashes and R0.
+;; Send out the current record.
 ;;
 SENDRECORD:     MOV     R0, #BUF_START          ; Init pointer
 .SENDCHAR:      MOV     A, @R0                  ; Get next char
@@ -281,7 +281,7 @@ SENDRECORD:     MOV     R0, #BUF_START          ; Init pointer
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Error handler
-;; Turn on red LED and loop forever
+;; Turn on red LED and loop forever.
 ;;
 ERROR:          SETB    OUT_GRNLEDn             ; Green LED off
                 CLR     OUT_REDLEDn             ; Red LED on

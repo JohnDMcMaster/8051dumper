@@ -6,3 +6,5 @@
 .rpt
 .rpt.rpt
 .ipynb_checkpoints
+*.hex
+*.bin
